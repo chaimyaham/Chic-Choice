@@ -1,0 +1,116 @@
+version: '3.1'
+
+services:
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: chaim.yaham17@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5050:80"
+    networks:
+      - db
+    restart: unless-stopped
+
+  couleur-db:
+    container_name: couleur-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: couleur_microservice
+      POSTGRES_PASSWORD: couleur_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - couleur-db:/data/postgres
+    ports:
+      - "5228:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  utilisateur-db:
+    container_name: utilisateur-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: utilisateur_microservice
+      POSTGRES_PASSWORD: utilisateur_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - utilisateur-db:/data/postgres
+    ports:
+      - "5227:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  media-db:
+    container_name: my-media-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: media_microservice
+      POSTGRES_PASSWORD: media_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - media-db:/data/postgres
+    ports:
+      - "5229:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  planification-db:
+    container_name: planification-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: planification_microservice
+      POSTGRES_PASSWORD: planification_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - planification-db:/data/postgres
+    ports:
+      - "5225:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  vetement-db:
+    container_name: vetement-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: vetement_microservice
+      POSTGRES_PASSWORD: vetement_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - vetement-db:/data/postgres
+    ports:
+      - "5224:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+  meteo-db:
+    container_name: meteo-microservice-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: meteo_microservice
+      POSTGRES_PASSWORD: meteo_microservice
+      PGDATA: /data/postgres
+    volumes:
+      - meteo-db:/data/postgres
+    ports:
+      - "5223:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  couleur-db:
+  media-db:
+  utilisateur-db:
+  planification-db:
+  vetement-db:
+  meteo-db:

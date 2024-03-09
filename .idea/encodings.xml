@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/CouleurService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CouleurService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MediaService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MediaService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MeteoService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/MeteoService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PlanifiactionService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/PlanifiactionService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/UtilisateurService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/UtilisateurService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VetementService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/VetementService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/couleur/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/couleur/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
