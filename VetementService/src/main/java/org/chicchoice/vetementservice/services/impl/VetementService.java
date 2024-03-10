@@ -1,18 +1,39 @@
 package org.chicchoice.vetementservice.services.impl;
 
 import org.chicchoice.vetementservice.dtos.VetementDto;
+import org.chicchoice.vetementservice.entities.Vetement;
 import org.chicchoice.vetementservice.enums.Category;
+import org.chicchoice.vetementservice.exeptions.ServiceException;
+import org.chicchoice.vetementservice.mapper.VetementMapper;
+import org.chicchoice.vetementservice.repositories.VetementRepository;
 import org.chicchoice.vetementservice.services.IVetementService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VetementService implements IVetementService {
+    private final VetementRepository vetementRepository;
+    private final VetementMapper vetementMapper;
+
+    @Autowired
+    public VetementService(VetementRepository vetementRepository,VetementMapper vetementMapper){
+        this.vetementRepository=vetementRepository;
+        this.vetementMapper=vetementMapper;
+    }
+
     @Override
     public List<VetementDto> getAllVetements() {
-        return null;
+        try{
+            List<Vetement> vetements = vetementRepository.findAll();
+            return vetements.stream().map(vetementMapper::toDTO).collect(Collectors.toList());
+        }catch(Exception e){
+            throw new ServiceException("Vetement","Une erreur s'est produite lors de la récupération de tous les vêtements.", e);
+        }
     }
+
 
     @Override
     public List<VetementDto> getAllByUserId(Long userId) {

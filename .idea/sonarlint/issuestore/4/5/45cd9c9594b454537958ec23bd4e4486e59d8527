@@ -1,13 +1,13 @@
 
 £
-java:S1186!"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨·™äúÿÿÿÿ8–Ú°¨â1
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨·™äúÿÿÿÿ8Ÿ›¨Ìâ1
 £
-java:S1186&"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ô¹²øÿÿÿÿ8šÚ°¨â1
+java:S1186;"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ô¹²øÿÿÿÿ8¡›¨Ìâ1
+t
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(èé•êùÿÿÿÿ8¸›¨Ìâ1
 H
-java:S1168"+Return an empty collection instead of null.(¥¹ï8éº«â1
+java:S1168("+Return an empty collection instead of null.(¥¹ï8Æ›¨Ìâ1
 H
-java:S1168"+Return an empty collection instead of null.(¥¹ï8éº«â1
+java:S1168A"+Return an empty collection instead of null.(¥¹ï8Ë›¨Ìâ1
 H
-java:S1168,"+Return an empty collection instead of null.(¥¹ï8—éº«â1
-H
-java:S11681"+Return an empty collection instead of null.(¥¹ï8šéº«â1
+java:S1168F"+Return an empty collection instead of null.(¥¹ï8Í›¨Ìâ1
