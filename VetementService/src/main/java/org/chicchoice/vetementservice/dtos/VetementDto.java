@@ -3,10 +3,7 @@ package org.chicchoice.vetementservice.dtos;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
+import lombok.*;
 import org.chicchoice.vetementservice.enums.Category;
 
 import java.io.Serializable;
@@ -18,13 +15,14 @@ import java.util.List;
  */
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class VetementDto implements Serializable {
     @Positive
     Long id;
     String note;
-    @PastOrPresent
-    LocalDateTime date_d_ajout;
+    LocalDateTime date_d_ajout = LocalDateTime.now();
     @NotNull
     Category category;
     String marque;

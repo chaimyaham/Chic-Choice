@@ -18,7 +18,7 @@ public class Vetement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String note;
-    private LocalDateTime date_d_ajout;
+    private LocalDateTime date_d_ajout = LocalDateTime.now();
     private Category category;
     private String marque ;
     private Long mediaId;
