@@ -1,2 +1,4 @@
 
-x	java:S116"WRename this field "date_d_ajout" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú ²‰ıÿÿÿÿ8óƒıêâ1
+x	java:S116"WRename this field "date_d_ajout" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ú ²‰ıÿÿÿÿ8‰½úæä1
+]
+java:S1128"ARemove this unused import 'net.minidev.json.annotate.JsonIgnore'.(‘‡l8Ğöúæä1

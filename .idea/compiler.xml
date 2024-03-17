@@ -18,12 +18,14 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.20/lombok-1.18.20.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok-mapstruct-binding/0.2.0/lombok-mapstruct-binding-0.2.0.jar" />
         </processorPath>
-        <module name="MediaService" />
         <module name="MeteoService" />
-        <module name="CouleurService" />
-        <module name="PlanifiactionService" />
+        <module name="ConfigService" />
         <module name="UtilisateurService" />
         <module name="VetementService" />
+        <module name="Discovery" />
+        <module name="MediaService" />
+        <module name="CouleurService" />
+        <module name="PlanifiactionService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

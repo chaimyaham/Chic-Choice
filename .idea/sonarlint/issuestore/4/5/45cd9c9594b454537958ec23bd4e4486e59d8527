@@ -1,11 +1,15 @@
 
 £
-java:S1186K"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¨·™äúÿÿÿÿ8­Ì¶ìâ1
-£
-java:S1186P"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ô¹²øÿÿÿÿ8°Ì¶ìâ1
-H
-java:S11681"+Return an empty collection instead of null.(¥¹ï8úÌ¶ìâ1
-H
-java:S1168V"+Return an empty collection instead of null.(¥¹ï8’Í¶ìâ1
-H
-java:S1168["+Return an empty collection instead of null.(¥¹ï8”Í¶ìâ1
+java:S1192,"€Define a constant instead of duplicating this literal "Error encontre lors de la recuperation de la liste des vetement" 5 times.(´ì™Òıÿÿÿÿ8ï¨¤çä1
+f
+java:S1192Y"IDefine a constant instead of duplicating this literal "vetement" 3 times.(«óğ£8ñ¨¤çä1
+e
+java:S1192-"IDefine a constant instead of duplicating this literal "Vetement" 8 times.(”¢/8ó¨¤çä1
+T
+java:S11355"2Complete the task associated to this TODO comment.(”Ôú‰üÿÿÿÿ8¾«¤çä1
+P
+java:S1135"2Complete the task associated to this TODO comment.(çØİõ8”¬¤çä1
+P
+java:S1135¬"2Complete the task associated to this TODO comment.(çØİõ8¬¤çä1
+n
+java:S1128"LRemove this unused import 'org.chicchoice.vetementservice.dtos.VetementDto'.(”¦™üøÿÿÿÿ8¹¬¤çä1

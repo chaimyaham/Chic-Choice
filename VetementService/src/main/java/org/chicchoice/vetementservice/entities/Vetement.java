@@ -2,6 +2,7 @@ package org.chicchoice.vetementservice.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 import org.chicchoice.vetementservice.enums.Category;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,8 @@ public class Vetement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String note;
-    private LocalDateTime date_d_ajout = LocalDateTime.now();
+    private LocalDateTime date_d_ajout;
+    @Enumerated(value = EnumType.STRING)
     private Category category;
     private String marque ;
     private Long mediaId;
@@ -26,7 +28,9 @@ public class Vetement {
     private Boolean favoris;
     @ManyToMany(mappedBy = "vetements")
     private List<Ensemble> ensembles;
-
+    public boolean isFavoris() {
+        return favoris;
+    }
 
 
 }

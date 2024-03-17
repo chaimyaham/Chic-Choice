@@ -2,6 +2,8 @@ package org.chicchoice.vetementservice.controllers;
 
 import jakarta.validation.Valid;
 import org.chicchoice.vetementservice.dtos.VetementDto;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
+import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.services.impl.VetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,22 +27,20 @@ public class VetementController {
 
 
     @GetMapping
-    public ResponseEntity<Page<VetementDto>> getAllvetements(
+    public ResponseEntity<Page<VetementResponseDto>> getAllvetements(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
         logger.info("fetching all vetement by pagination");
         Pageable pageable = Pageable.ofSize(size).withPage(page);
-        Page<VetementDto> vetementDtoPage=vetementService.getAllVetements(pageable);
+        Page<VetementResponseDto> vetementDtoPage=vetementService.getAllVetements(pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
     @PostMapping
-    public ResponseEntity<VetementDto> ajouterVetement(@RequestBody @Valid VetementDto vetement){
+    public ResponseEntity<VetementResponseDto> ajouterVetement(@RequestBody @Valid VetementRequestDto vetement){
         logger.info("ajouter un nouveau vetement controller ");
-        VetementDto vetementDto=vetementService.createVetement(vetement);
+        VetementResponseDto vetementDto=vetementService.createVetement(vetement);
         return new ResponseEntity<>(vetementDto,HttpStatus.OK);
-
-
 
 
     }

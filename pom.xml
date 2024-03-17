@@ -16,6 +16,8 @@
     <module>UtilisateurService</module>
     <module>MediaService</module>
     <module>MeteoService</module>
+      <module>ConfigService</module>
+    <module>Discovery</module>
   </modules>
 
   <properties>

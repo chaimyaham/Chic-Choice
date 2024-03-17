@@ -1,13 +1,23 @@
 package org.chicchoice.vetementservice.mapper;
 
-import org.chicchoice.vetementservice.dtos.VetementDto;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
+import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
-import org.mapstruct.Mapper;
+import org.mapstruct.*;
 
-
-@Mapper(componentModel = "spring")
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)
 public interface VetementMapper {
+    Vetement toEntity(VetementRequestDto vetementRequestDto);
 
-    VetementDto toDTO(Vetement vetement);
-    Vetement toEntity(VetementDto vetementDto);
+    VetementRequestDto toDto(Vetement vetement);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Vetement partialUpdate(VetementRequestDto vetementRequestDto, @MappingTarget Vetement vetement);
+
+    Vetement toEntity(VetementResponseDto vetementResponseDto);
+
+    VetementResponseDto toDto1(Vetement vetement);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    Vetement partialUpdate(VetementResponseDto vetementResponseDto, @MappingTarget Vetement vetement);
 }

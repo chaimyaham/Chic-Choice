@@ -1,0 +1,13 @@
+server:
+  port: 3000
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: ConfigService
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations

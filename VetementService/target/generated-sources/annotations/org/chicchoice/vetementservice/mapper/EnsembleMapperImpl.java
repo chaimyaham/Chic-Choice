@@ -3,116 +3,144 @@ package org.chicchoice.vetementservice.mapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
-import org.chicchoice.vetementservice.dtos.EnsembleDto;
-import org.chicchoice.vetementservice.dtos.VetementDto;
+import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
+import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
 import org.chicchoice.vetementservice.entities.Ensemble;
 import org.chicchoice.vetementservice.entities.Vetement;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-11T10:08:01+0000",
+    date = "2024-03-17T16:01:35+0000",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Amazon.com Inc.)"
 )
 @Component
 public class EnsembleMapperImpl implements EnsembleMapper {
 
     @Override
-    public EnsembleDto toDTO(Ensemble ensemble) {
-        if ( ensemble == null ) {
-            return null;
-        }
-
-        EnsembleDto.EnsembleDtoBuilder ensembleDto = EnsembleDto.builder();
-
-        ensembleDto.id( ensemble.getId() );
-        ensembleDto.createdAt( ensemble.getCreatedAt() );
-        ensembleDto.nomDeLEnsemble( ensemble.getNomDeLEnsemble() );
-        ensembleDto.utilisateurId( ensemble.getUtilisateurId() );
-        ensembleDto.favoris( ensemble.getFavoris() );
-        ensembleDto.vetements( vetementListToVetementDtoList( ensemble.getVetements() ) );
-
-        return ensembleDto.build();
-    }
-
-    @Override
-    public Ensemble toEntity(EnsembleDto ensembleDto) {
-        if ( ensembleDto == null ) {
+    public Ensemble toEntity(EnsembleRequestDto ensembleRequestDto) {
+        if ( ensembleRequestDto == null ) {
             return null;
         }
 
         Ensemble.EnsembleBuilder ensemble = Ensemble.builder();
 
-        ensemble.id( ensembleDto.getId() );
-        ensemble.createdAt( ensembleDto.getCreatedAt() );
-        ensemble.nomDeLEnsemble( ensembleDto.getNomDeLEnsemble() );
-        ensemble.utilisateurId( ensembleDto.getUtilisateurId() );
-        ensemble.favoris( ensembleDto.getFavoris() );
-        ensemble.vetements( vetementDtoListToVetementList( ensembleDto.getVetements() ) );
+        ensemble.nomDeLEnsemble( ensembleRequestDto.getNomDeLEnsemble() );
+        ensemble.utilisateurId( ensembleRequestDto.getUtilisateurId() );
+        ensemble.favoris( ensembleRequestDto.getFavoris() );
 
         return ensemble.build();
     }
 
-    protected List<EnsembleDto> ensembleListToEnsembleDtoList(List<Ensemble> list) {
-        if ( list == null ) {
+    @Override
+    public EnsembleRequestDto toDto(Ensemble ensemble) {
+        if ( ensemble == null ) {
             return null;
         }
 
-        List<EnsembleDto> list1 = new ArrayList<EnsembleDto>( list.size() );
-        for ( Ensemble ensemble : list ) {
-            list1.add( toDTO( ensemble ) );
-        }
+        EnsembleRequestDto ensembleRequestDto = new EnsembleRequestDto();
 
-        return list1;
+        ensembleRequestDto.setNomDeLEnsemble( ensemble.getNomDeLEnsemble() );
+        ensembleRequestDto.setUtilisateurId( ensemble.getUtilisateurId() );
+        ensembleRequestDto.setFavoris( ensemble.getFavoris() );
+
+        return ensembleRequestDto;
     }
 
-    protected VetementDto vetementToVetementDto(Vetement vetement) {
-        if ( vetement == null ) {
+    @Override
+    public Ensemble partialUpdate(EnsembleRequestDto ensembleRequestDto, Ensemble ensemble) {
+        if ( ensembleRequestDto == null ) {
+            return ensemble;
+        }
+
+        if ( ensembleRequestDto.getNomDeLEnsemble() != null ) {
+            ensemble.setNomDeLEnsemble( ensembleRequestDto.getNomDeLEnsemble() );
+        }
+        if ( ensembleRequestDto.getUtilisateurId() != null ) {
+            ensemble.setUtilisateurId( ensembleRequestDto.getUtilisateurId() );
+        }
+        if ( ensembleRequestDto.getFavoris() != null ) {
+            ensemble.setFavoris( ensembleRequestDto.getFavoris() );
+        }
+
+        return ensemble;
+    }
+
+    @Override
+    public Ensemble toEntity(EnsembleResponseDto ensembleResponseDto) {
+        if ( ensembleResponseDto == null ) {
             return null;
         }
 
-        VetementDto.VetementDtoBuilder vetementDto = VetementDto.builder();
+        Ensemble.EnsembleBuilder ensemble = Ensemble.builder();
 
-        vetementDto.id( vetement.getId() );
-        vetementDto.note( vetement.getNote() );
-        vetementDto.date_d_ajout( vetement.getDate_d_ajout() );
-        vetementDto.category( vetement.getCategory() );
-        vetementDto.marque( vetement.getMarque() );
-        vetementDto.mediaId( vetement.getMediaId() );
-        vetementDto.userId( vetement.getUserId() );
-        vetementDto.favoris( vetement.getFavoris() );
-        vetementDto.ensembles( ensembleListToEnsembleDtoList( vetement.getEnsembles() ) );
+        ensemble.id( ensembleResponseDto.getId() );
+        ensemble.createdAt( ensembleResponseDto.getCreatedAt() );
+        ensemble.nomDeLEnsemble( ensembleResponseDto.getNomDeLEnsemble() );
+        ensemble.utilisateurId( ensembleResponseDto.getUtilisateurId() );
+        ensemble.favoris( ensembleResponseDto.getFavoris() );
+        ensemble.vetements( vetementDtoListToVetementList( ensembleResponseDto.getVetements() ) );
 
-        return vetementDto.build();
+        return ensemble.build();
     }
 
-    protected List<VetementDto> vetementListToVetementDtoList(List<Vetement> list) {
-        if ( list == null ) {
+    @Override
+    public EnsembleResponseDto toDto1(Ensemble ensemble) {
+        if ( ensemble == null ) {
             return null;
         }
 
-        List<VetementDto> list1 = new ArrayList<VetementDto>( list.size() );
-        for ( Vetement vetement : list ) {
-            list1.add( vetementToVetementDto( vetement ) );
-        }
+        EnsembleResponseDto ensembleResponseDto = new EnsembleResponseDto();
 
-        return list1;
+        ensembleResponseDto.setId( ensemble.getId() );
+        ensembleResponseDto.setCreatedAt( ensemble.getCreatedAt() );
+        ensembleResponseDto.setNomDeLEnsemble( ensemble.getNomDeLEnsemble() );
+        ensembleResponseDto.setUtilisateurId( ensemble.getUtilisateurId() );
+        ensembleResponseDto.setFavoris( ensemble.getFavoris() );
+        ensembleResponseDto.setVetements( vetementListToVetementDtoList( ensemble.getVetements() ) );
+
+        return ensembleResponseDto;
     }
 
-    protected List<Ensemble> ensembleDtoListToEnsembleList(List<EnsembleDto> list) {
-        if ( list == null ) {
-            return null;
+    @Override
+    public Ensemble partialUpdate(EnsembleResponseDto ensembleResponseDto, Ensemble ensemble) {
+        if ( ensembleResponseDto == null ) {
+            return ensemble;
         }
 
-        List<Ensemble> list1 = new ArrayList<Ensemble>( list.size() );
-        for ( EnsembleDto ensembleDto : list ) {
-            list1.add( toEntity( ensembleDto ) );
+        if ( ensembleResponseDto.getId() != null ) {
+            ensemble.setId( ensembleResponseDto.getId() );
+        }
+        if ( ensembleResponseDto.getCreatedAt() != null ) {
+            ensemble.setCreatedAt( ensembleResponseDto.getCreatedAt() );
+        }
+        if ( ensembleResponseDto.getNomDeLEnsemble() != null ) {
+            ensemble.setNomDeLEnsemble( ensembleResponseDto.getNomDeLEnsemble() );
+        }
+        if ( ensembleResponseDto.getUtilisateurId() != null ) {
+            ensemble.setUtilisateurId( ensembleResponseDto.getUtilisateurId() );
+        }
+        if ( ensembleResponseDto.getFavoris() != null ) {
+            ensemble.setFavoris( ensembleResponseDto.getFavoris() );
+        }
+        if ( ensemble.getVetements() != null ) {
+            List<Vetement> list = vetementDtoListToVetementList( ensembleResponseDto.getVetements() );
+            if ( list != null ) {
+                ensemble.getVetements().clear();
+                ensemble.getVetements().addAll( list );
+            }
+        }
+        else {
+            List<Vetement> list = vetementDtoListToVetementList( ensembleResponseDto.getVetements() );
+            if ( list != null ) {
+                ensemble.setVetements( list );
+            }
         }
 
-        return list1;
+        return ensemble;
     }
 
-    protected Vetement vetementDtoToVetement(VetementDto vetementDto) {
+    protected Vetement vetementDtoToVetement(EnsembleResponseDto.VetementDto vetementDto) {
         if ( vetementDto == null ) {
             return null;
         }
@@ -127,19 +155,50 @@ public class EnsembleMapperImpl implements EnsembleMapper {
         vetement.mediaId( vetementDto.getMediaId() );
         vetement.userId( vetementDto.getUserId() );
         vetement.favoris( vetementDto.getFavoris() );
-        vetement.ensembles( ensembleDtoListToEnsembleList( vetementDto.getEnsembles() ) );
 
         return vetement.build();
     }
 
-    protected List<Vetement> vetementDtoListToVetementList(List<VetementDto> list) {
+    protected List<Vetement> vetementDtoListToVetementList(List<EnsembleResponseDto.VetementDto> list) {
         if ( list == null ) {
             return null;
         }
 
         List<Vetement> list1 = new ArrayList<Vetement>( list.size() );
-        for ( VetementDto vetementDto : list ) {
+        for ( EnsembleResponseDto.VetementDto vetementDto : list ) {
             list1.add( vetementDtoToVetement( vetementDto ) );
+        }
+
+        return list1;
+    }
+
+    protected EnsembleResponseDto.VetementDto vetementToVetementDto(Vetement vetement) {
+        if ( vetement == null ) {
+            return null;
+        }
+
+        EnsembleResponseDto.VetementDto vetementDto = new EnsembleResponseDto.VetementDto();
+
+        vetementDto.setId( vetement.getId() );
+        vetementDto.setNote( vetement.getNote() );
+        vetementDto.setDate_d_ajout( vetement.getDate_d_ajout() );
+        vetementDto.setCategory( vetement.getCategory() );
+        vetementDto.setMarque( vetement.getMarque() );
+        vetementDto.setMediaId( vetement.getMediaId() );
+        vetementDto.setUserId( vetement.getUserId() );
+        vetementDto.setFavoris( vetement.getFavoris() );
+
+        return vetementDto;
+    }
+
+    protected List<EnsembleResponseDto.VetementDto> vetementListToVetementDtoList(List<Vetement> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<EnsembleResponseDto.VetementDto> list1 = new ArrayList<EnsembleResponseDto.VetementDto>( list.size() );
+        for ( Vetement vetement : list ) {
+            list1.add( vetementToVetementDto( vetement ) );
         }
 
         return list1;

@@ -19,11 +19,10 @@ import java.util.List;
 public class EnsembleDto implements Serializable {
     @Positive
     Long id;
-    LocalDateTime createdAt;
+    LocalDateTime createdAt= LocalDateTime.now();
     @NotNull
     String nomDeLEnsemble;
     Long utilisateurId;
     Boolean favoris;
-    @NotNull
     List<VetementDto> vetements;
 }

@@ -18,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+
 public class VetementDto implements Serializable {
     @Positive
     Long id;
@@ -32,5 +33,17 @@ public class VetementDto implements Serializable {
     Long userId;
     @NotNull
     Boolean favoris;
-    List<EnsembleDto> ensembles;
+    List<VetementDto.EnsembleDto> ensembles;
+
+    @Data
+    public static class EnsembleDto{
+        @Positive
+        Long id;
+        LocalDateTime createdAt;
+        @NotNull
+        String nomDeLEnsemble;
+        Long utilisateurId;
+        Boolean favoris;
+
+    }
 }

@@ -29,5 +29,9 @@ public class Ensemble {
     )
     private List<Vetement> vetements;
 
+    public boolean isFavoris() {
+        return favoris;
+    }
+
 
 }
