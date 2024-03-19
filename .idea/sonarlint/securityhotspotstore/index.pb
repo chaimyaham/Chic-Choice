@@ -111,9 +111,13 @@ aVetementService/src/main/java/org/chicchoice/vetementservice/dtos/request/Ensem
 cVetementService/src/main/java/org/chicchoice/vetementservice/dtos/response/EnsembleResponseDto.java,2/1/21f10e3a0ce672b58134711ca5a6698e9098a67f
 E
 ConfigService/pom.xml,b/7/b7750b958bd6d951aa80ec7ae42399eba1ee15ff
-c
-3ConfigService/src/main/java/org/chicchoice/App.java,f/6/f6772bfd7825760f7f8f6809e1b73a0b5c97c775
 A
 Discovery/pom.xml,b/8/b8d687099062c66c7dd1ea4c1d28939d86cd3ffd
 e
 5Discovery/src/main/java/org/chicchoice/Discovery.java,b/f/bfb344dbb53b60ddd29c57cbde6cca75d9e1c528
+?
+Gateway/pom.xml,3/2/3237456de9f7ff101ceb260d44331867b68d4b95
+a
+1Gateway/src/main/java/org/chicchoice/Gateway.java,8/2/821525b617c4cd5b9a245d2e1c016da561668c51
+l
+<ConfigService/src/main/java/org/chicchoice/ConfigServer.java,9/f/9fb39c410071231dfaf2fbb211eccea291cb1c11

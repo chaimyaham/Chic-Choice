@@ -42,6 +42,16 @@ public class EnsembleController {
         EnsembleResponseDto ensembleDto = ensembleService.ajouterUnVetementAUnEnsemble(vetementId, ensembleId);
         return new ResponseEntity<>(ensembleDto, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{ensembleId}/vetements/{vetementId}")
+    public ResponseEntity<EnsembleResponseDto> supprimerVetementDunEnsemble(
+            @PathVariable Long ensembleId,
+            @PathVariable Long vetementId
+    ) {
+        EnsembleResponseDto ensembleDto = ensembleService.supprimerUnVetementDunEnsemble(vetementId, ensembleId);
+        logger.info("supprimer Vetement D un Ensemble - Controleur");
+        return new ResponseEntity<>(ensembleDto, HttpStatus.OK);
+    }
     @GetMapping("/utilisateur/{idUtilisateur}/ensembles")
     public ResponseEntity<Page<EnsembleResponseDto>> obtenirEnsemblesCreerParUser(
             @PathVariable Long idUtilisateur,
@@ -68,6 +78,32 @@ public class EnsembleController {
         logger.info("Creer Un ensemble - Controleur");
         EnsembleResponseDto ensembleDto=ensembleService.creerEtAjouterUnEnsemble(ensemble);
         return new ResponseEntity<>(ensembleDto, HttpStatus.OK);
+    }
+    @GetMapping("/favoris/utilisateur/{userId}")
+    public ResponseEntity<Page<EnsembleResponseDto>> obtenirEnsemblesFavorisParUtilisateur(
+            @PathVariable Long userId,
+            Pageable pageable
+    ){
+        Page<EnsembleResponseDto> ensembleDtoPage = ensembleService.getEnsemblesFavorisByUserId(userId, pageable);
+        logger.info("obtenir les Ensembles Favoris dee cet Utilisateur {}- Controleur",userId);
+        return new ResponseEntity<>(ensembleDtoPage, HttpStatus.OK);
+    }
+    @DeleteMapping("/{ensembleId}")
+    public ResponseEntity<Void> supprimerEnsemble(
+            @PathVariable Long ensembleId
+    ) {
+        logger.info("supprimer l'eensemble de cet id {} - Controleur",ensembleId);
+        ensembleService.supprimerUnEnsemble(ensembleId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/{ensembleId}/favori")
+    public ResponseEntity<Void> marquerEnsembleCommeFavori(
+            @PathVariable Long ensembleId
+    ) {
+        ensembleService.marquerUnEnsembleCommeFavori(ensembleId);
+        logger.info("marquer L'Ensemble Comme Favori id :{}- Controleur",ensembleId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 

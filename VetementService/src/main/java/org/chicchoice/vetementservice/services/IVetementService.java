@@ -20,7 +20,7 @@ public interface IVetementService {
     Page<VetementResponseDto> getVetementsFavorisByUserId(Long userId,Pageable pageable);
     Page<VetementResponseDto> getAllByCategoryAndUserId(Long userId,Category category,Pageable pageable);
     //todo ajouter fonction getallbycolor and userid
-
+    //todo the ensemble that it will be created should be with the same user id as vetement
 
 
 }

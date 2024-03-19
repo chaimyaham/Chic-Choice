@@ -1,9 +1,10 @@
 package org.chicchoice.vetementservice.controllers;
 
 import jakarta.validation.Valid;
-import org.chicchoice.vetementservice.dtos.VetementDto;
+
 import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
+import org.chicchoice.vetementservice.enums.Category;
 import org.chicchoice.vetementservice.services.impl.VetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,59 @@ public class VetementController {
         return new ResponseEntity<>(vetementDto,HttpStatus.OK);
 
 
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<VetementResponseDto> obtenirVetementParId(
+            @PathVariable Long id
+    ){
+        VetementResponseDto vetementDto = vetementService.getVetementById(id);
+        logger.info("obtenir vetement par :{} controller ",id);
+        return new ResponseEntity<>(vetementDto, HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> supprimerVetementParId(
+            @PathVariable Long id
+    ){
+        vetementService.deleteVetementById(id);
+        logger.info("deleting article  par :{} controller ",id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PostMapping("/{id}/favori")
+    public ResponseEntity<Void> marquerVetementCommeFavori(@PathVariable Long id){
+        vetementService.marquerVetementCommeFavori(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/categorie/{category}")
+    public ResponseEntity<Page<VetementResponseDto>> getVetementsByCategory(
+            @PathVariable Category category,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<VetementResponseDto> vetementDtoPage = vetementService.getVetementsByCategory(category, pageable);
+        return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
+    }
+    @GetMapping("/categorie/{category}/utilisateur/{userId}")
+    public ResponseEntity<Page<VetementResponseDto>> getVetementsByCategoryAndUser(
+            @PathVariable Category category,
+            @PathVariable Long userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByCategoryAndUserId(userId, category, pageable);
+        return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
+    }
+    @GetMapping("/favoris/utilisateur/{userId}")
+    public ResponseEntity<Page<VetementResponseDto>> getVetementsFavorisByUserId(
+            @PathVariable Long userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<VetementResponseDto> vetementDtoPage = vetementService.getVetementsFavorisByUserId(userId, pageable);
+        return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
 
 }

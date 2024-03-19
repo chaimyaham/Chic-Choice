@@ -18,6 +18,6 @@ public interface IEnsembleService {
     Page<EnsembleResponseDto> getEnsemblesByUserID(Long userId,Pageable pageable);
     Page<EnsembleResponseDto>getEnsemblesFavorisByUserId(Long userId,Pageable pageable);
     //todo ajouter la method pour recuperer la list des vetement deja porter dans une temperature percise
-
+   //todo ajouter function get ensemble by id
 
 }

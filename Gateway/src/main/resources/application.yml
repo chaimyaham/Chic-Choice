@@ -1,0 +1,26 @@
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: vetement
+          uri: lb://VETEMENT
+          predicates:
+            - Path=/api/v1/vetements/**
+        - id: ensemble
+          uri: lb://VETEMENT
+          predicates:
+            - Path=/api/v1/ensembles/**
+
+server:
+  port: 3333
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true

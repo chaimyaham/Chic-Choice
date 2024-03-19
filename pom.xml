@@ -18,6 +18,7 @@
     <module>MeteoService</module>
       <module>ConfigService</module>
     <module>Discovery</module>
+      <module>Gateway</module>
   </modules>
 
   <properties>

@@ -125,6 +125,7 @@ public class EnsembleService implements IEnsembleService {
     @Override
     public void marquerUnEnsembleCommeFavori(Long ensembleId) {
         try {
+            //todo je dois verifier le user id before
             // Verifier si l'ensemble existe
             ensembleRepository.findById(ensembleId).ifPresentOrElse(ensemble -> {
                 if (!ensemble.isFavoris()) {
