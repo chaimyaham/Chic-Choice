@@ -1,19 +1,38 @@
 package org.chicchoice.planificationservice.dtos;
 
+import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.FutureOrPresent;
-import lombok.Value;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import lombok.*;
+import org.chicchoice.planificationservice.entities.Planification;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
- * DTO for {@link org.chicchoice.planificationservice.entities.Planification}
+ * DTO for {@link Planification}
  */
-@Value
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlanificationDto implements Serializable {
+    @Positive
     Long id;
+    @NotNull
+    String titre;
+    @NotNull
     @FutureOrPresent
-    LocalDate datePlanification;
-    Long userId;
-    Long EnsembleId;
+    LocalDate dateDebut;
+    @Future
+    LocalDate dateFin;
+    String description;
+    @NotNull
+    Long utilisateurId;
+    @NotNull
+    List<Long> ensemblesIds;
 }

@@ -20,8 +20,8 @@
         </processorPath>
         <module name="MeteoService" />
         <module name="ConfigService" />
-        <module name="UtilisateurService" />
         <module name="Gateway" />
+        <module name="UtilisateurService" />
         <module name="VetementService" />
         <module name="Discovery" />
         <module name="MediaService" />

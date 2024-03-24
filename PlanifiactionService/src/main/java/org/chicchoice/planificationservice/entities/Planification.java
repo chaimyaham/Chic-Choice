@@ -1,18 +1,19 @@
 package org.chicchoice.planificationservice.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
-@Data
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,8 +21,14 @@ public class Planification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate datePlanification;
-    private Long userId;
-    private Long EnsembleId;
+    private String titre;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
+    private String description;
+    private Long utilisateurId;
+
+    @ElementCollection
+    private List<Long> ensemblesIds;
+
 
 }
