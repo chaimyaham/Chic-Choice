@@ -2,6 +2,7 @@ package org.chicchoice.vetementservice.services.impl;
 
 import org.chicchoice.vetementservice.dtos.EnsembleDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
 import org.chicchoice.vetementservice.entities.Ensemble;
 import org.chicchoice.vetementservice.entities.Vetement;
@@ -9,6 +10,7 @@ import org.chicchoice.vetementservice.exeptions.ResourceNotFoundException;
 import org.chicchoice.vetementservice.exeptions.ServiceException;
 import org.chicchoice.vetementservice.exeptions.VetementAlreadyExistsException;
 import org.chicchoice.vetementservice.mapper.EnsembleMapper;
+import org.chicchoice.vetementservice.mapper.VetementMapper;
 import org.chicchoice.vetementservice.repositories.EnsembleRepository;
 import org.chicchoice.vetementservice.repositories.VetementRepository;
 import org.chicchoice.vetementservice.services.IEnsembleService;
@@ -21,6 +23,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,14 +31,16 @@ public class EnsembleService implements IEnsembleService {
     private final EnsembleRepository ensembleRepository;
     private final EnsembleMapper ensembleMapper;
     private final VetementRepository vetementRepository;
+    private final VetementMapper vetementMapper;
     private static final Logger logger = LoggerFactory.getLogger(EnsembleService.class);
 
 
     @Autowired
-    public EnsembleService(EnsembleRepository ensembleRepository,EnsembleMapper ensembleMapper,VetementRepository vetementRepository){
+    public EnsembleService(EnsembleRepository ensembleRepository,EnsembleMapper ensembleMapper,VetementRepository vetementRepository,VetementMapper vetementMapper){
         this.ensembleMapper=ensembleMapper;
         this.ensembleRepository=ensembleRepository;
         this.vetementRepository=vetementRepository;
+        this.vetementMapper=vetementMapper;
     }
     @Override
     public EnsembleResponseDto ajouterUnVetementAUnEnsemble(Long vetementId, Long ensembleId) {
@@ -204,6 +209,21 @@ public class EnsembleService implements IEnsembleService {
             throw new ServiceException("Ensemble", "Une erreur s'est produite lors de la recuperaion de la liste des ensembles.", e);
         }
 
+    }
+
+    @Override
+    public void supprimerVetementDeTousEnsembles(Vetement vetement) {
+        try {
+            List<Ensemble> ensembles = ensembleRepository.findByVetementsContaining(vetement);
+            for (Ensemble ensemble : ensembles) {
+                ensemble.getVetements().remove(vetement);
+                logger.info("deleting the article from all the enesmebles");
+                ensembleRepository.save(ensemble);
+            }
+        } catch (Exception e) {
+            logger.error("Erreur lors de la suppression de vetement de tous les ensemble", e);
+            throw new ServiceException("Ensemble", "Erreur lors de la suppression d'un vetement de tous les ensembles.", e);
+        }
     }
 
 }

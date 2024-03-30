@@ -26,12 +26,14 @@ import java.util.Optional;
 public class VetementService implements IVetementService {
     private final VetementRepository vetementRepository;
     private final VetementMapper vetementMapper;
+    private final EnsembleService ensembleService;
     private static final Logger logger = LoggerFactory.getLogger(VetementService.class);
 
     @Autowired
-    public VetementService(VetementRepository vetementRepository,VetementMapper vetementMapper){
+    public VetementService(VetementRepository vetementRepository,VetementMapper vetementMapper,EnsembleService ensembleService){
         this.vetementRepository=vetementRepository;
         this.vetementMapper=vetementMapper;
+        this.ensembleService=ensembleService;
     }
 
     @Override
@@ -106,6 +108,8 @@ public class VetementService implements IVetementService {
                 logger.error("article with that id n'exist pas : {}",id);
                 throw new ResourceNotFoundException("vetement","article with that id nexist pas",id.toString());
             }
+            Vetement vetement = article.get();
+            ensembleService.supprimerVetementDeTousEnsembles(vetement);
             vetementRepository.deleteById(id);
             logger.info("article supprimer avec succes");
 

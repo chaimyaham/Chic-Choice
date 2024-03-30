@@ -58,7 +58,7 @@ public class VetementController {
             @PathVariable Long id
     ){
         vetementService.deleteVetementById(id);
-        logger.info("deleting article  par :{} controller ",id);
+        logger.info("deleting article avec id  :{} from controller ",id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
     @PostMapping("/{id}/favori")

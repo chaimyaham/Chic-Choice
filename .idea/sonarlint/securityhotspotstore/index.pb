@@ -133,8 +133,6 @@ iPlanifiactionService/src/main/java/org/chicchoice/planificationservice/services
 oPlanifiactionService/src/main/java/org/chicchoice/planificationservice/controllers/PlanificationController.java,e/8/e84ee721de2d350ab4d7ae136e20133c237d8e3b
 ê
 `UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/mapper/UtilisateurMapper.java,8/d/8dc71d4871e66a776650d319c7a69adc013d9b2b
-è
-_UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/security/SecurityConfig.java,d/b/dbdb6e46c6ac55077103fd002ae24eb976a28594
 o
 ?Gateway/src/main/java/org/chicchoice/config/SecurityConfig.java,f/1/f1105ef3f755ec3c50b1af052b84bbc561492e34
 v

@@ -23,8 +23,9 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity){
 //        i can do permittAll() instead of authenticated()
 //        serverHttpSecurity.authorizeExchange(exchanges->exchanges.anyExchange().authenticated());
+//        serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
         serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
-                .pathMatchers("/api/v1/vetements/**") .authenticated()
+                        .pathMatchers(HttpMethod.DELETE, "/api/v1/vetements/**").authenticated()
                 .pathMatchers("/api/v1/ensembles/**").hasRole("USER")
                 ).oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
         serverHttpSecurity.csrf(csrfSpec -> csrfSpec.disable());

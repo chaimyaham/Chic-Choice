@@ -1,5 +1,5 @@
 
-…
-java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "returnValue".(¸Ë¾€úÿÿÿÿ8Þüîÿè1
+«
+java:S1488"cImmediately return this expression instead of assigning it to the temporary variable "returnValue".(¸Ë¾€úÿÿÿÿ8Þüîÿè1J$89061b39-741f-4d15-80bc-52b400c98734
 •
-java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8âƒëÿè1J$9d47f519-f049-411f-a6b3-3a5f22e8b976
+java:S6204"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8âƒëÿè1J$8476ed27-9a67-4faf-a4be-dacb8dc952ce

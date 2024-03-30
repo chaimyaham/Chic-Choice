@@ -2,7 +2,9 @@ package org.chicchoice.vetementservice.services;
 
 import org.chicchoice.vetementservice.dtos.EnsembleDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
+import org.chicchoice.vetementservice.entities.Vetement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,6 +19,7 @@ public interface IEnsembleService {
     Page<EnsembleResponseDto> getAllEnsembles(Pageable pageable);
     Page<EnsembleResponseDto> getEnsemblesByUserID(Long userId,Pageable pageable);
     Page<EnsembleResponseDto>getEnsemblesFavorisByUserId(Long userId,Pageable pageable);
+    void supprimerVetementDeTousEnsembles(Vetement vetement);
     //todo ajouter la method pour recuperer la list des vetement deja porter dans une temperature percise
    //todo ajouter function get ensemble by id
 
