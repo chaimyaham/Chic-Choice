@@ -1,7 +1,10 @@
 package org.chicchoice.utilisateurservice.dtos;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Value;
+import jakarta.validation.constraints.Positive;
+import lombok.*;
 import org.chicchoice.utilisateurservice.enums.Sexe;
 import org.chicchoice.utilisateurservice.enums.UtilisateurRole;
 
@@ -10,22 +13,40 @@ import java.io.Serializable;
 /**
  * DTO for {@link org.chicchoice.utilisateurservice.entities.Utilisateur}
  */
-@Value
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class UtilisateurDto implements Serializable {
+    @Positive(message = "L'identifiant doit etre un nombre positif.")
     Long id;
-    @NotNull
+
+    @NotBlank(message = "L'adresse email ne peut pas etre vide.")
+    @Email(message = "L'adresse email doit etre valide.")
     String email;
-    @NotNull
+
+    @NotBlank(message = "Le mot de passe ne peut pas etre vide.")
     String motDePasse;
-    @NotNull
+
+    @NotBlank(message = "Le nom ne peut pas etre vide.")
     String nom;
-    @NotNull
+
+    @NotBlank(message = "Le prenom ne peut pas etre vide.")
     String prenom;
-    @NotNull
+
+    @NotNull(message = "Le sexe ne peut pas etre vide.")
     Sexe sexe;
-    @NotNull
+
+    @NotNull(message = "Le role ne peut pas etre vide.")
     UtilisateurRole role;
-    @NotNull
-    String localisation;
+
+    @NotBlank(message = "La ville ne peut pas etre vide.")
+    String ville;
+
+    @NotBlank(message = "Le pays ne peut pas etre vide.")
+    String pays;
+
+    @NotBlank(message = "Les preferences de style ne peuvent pas etre vides.")
     String preferencesStyle;
 }

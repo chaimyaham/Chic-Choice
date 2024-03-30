@@ -14,7 +14,11 @@ spring:
           uri: lb://VETEMENT
           predicates:
             - Path=/api/v1/ensembles/**
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "http://localhost:7080/realms/chic-choice/protocol/openid-connect/certs"
 server:
   port: 3333
 

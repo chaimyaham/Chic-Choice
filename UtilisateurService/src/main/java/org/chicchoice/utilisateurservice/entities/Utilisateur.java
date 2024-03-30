@@ -1,11 +1,15 @@
 package org.chicchoice.utilisateurservice.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.chicchoice.utilisateurservice.enums.Sexe;
 import org.chicchoice.utilisateurservice.enums.UtilisateurRole;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class Utilisateur {
 
@@ -16,9 +20,12 @@ public class Utilisateur {
     private  String motDePasse;
     private String nom;
     private String prenom;
+    @Enumerated(value = EnumType.STRING)
     private Sexe sexe;
+    @Enumerated(value = EnumType.STRING)
     private UtilisateurRole role;
-    private String localisation ;
+    private String ville ;
+    private String pays ;
 
     @Column(length = 1000)
     private String preferencesStyle;
