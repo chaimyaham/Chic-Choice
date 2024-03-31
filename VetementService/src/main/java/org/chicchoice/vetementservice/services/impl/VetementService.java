@@ -110,6 +110,7 @@ public class VetementService implements IVetementService {
             }
             Vetement vetement = article.get();
             ensembleService.supprimerVetementDeTousEnsembles(vetement);
+//            todo also delete the media of that vetement using feign client
             vetementRepository.deleteById(id);
             logger.info("article supprimer avec succes");
 

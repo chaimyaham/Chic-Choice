@@ -1,0 +1,8 @@
+
+˜	java:S117&"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àó¦¸ùÿÿÿÿ8´‰”‘é1J$48f3784d-f975-4bce-afc6-85c735e9499c
+ª
+java:S4087"bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(æŒÕ®ùÿÿÿÿ8÷·‰‘é1J$ed20c216-10c9-408c-b90b-c92897d8d1f6
+z
+java:S1144"2Remove this unused private "convertToFile" method.(¬ÉŞüÿÿÿÿÿ8¸‰‘é1J$385d6cdd-d742-40a9-9ae9-85e71bcd2309
+w
+java:S1144"/Remove this unused private "uploadFile" method.(¿Ô·›üÿÿÿÿ8‘¸‰‘é1J$4e486f82-c7c0-4948-967b-b79e8b528495
