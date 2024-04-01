@@ -1,6 +1,7 @@
 package org.chicchoice.vetementservice.services.impl;
 
-import org.chicchoice.vetementservice.dtos.VetementDto;
+
+import com.simplon.media.MediaClient;
 import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
@@ -27,13 +28,17 @@ public class VetementService implements IVetementService {
     private final VetementRepository vetementRepository;
     private final VetementMapper vetementMapper;
     private final EnsembleService ensembleService;
+    private final MediaClient mediaClient;
     private static final Logger logger = LoggerFactory.getLogger(VetementService.class);
 
     @Autowired
-    public VetementService(VetementRepository vetementRepository,VetementMapper vetementMapper,EnsembleService ensembleService){
+    public VetementService(VetementRepository vetementRepository,
+                           VetementMapper vetementMapper,
+                           EnsembleService ensembleService,MediaClient mediaClient){
         this.vetementRepository=vetementRepository;
         this.vetementMapper=vetementMapper;
         this.ensembleService=ensembleService;
+        this.mediaClient=mediaClient;
     }
 
     @Override
