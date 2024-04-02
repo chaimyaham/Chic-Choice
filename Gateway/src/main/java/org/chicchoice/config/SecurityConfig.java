@@ -26,7 +26,7 @@ public class SecurityConfig {
 //        serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
         serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
                 .pathMatchers("/api/v1/vetements/**").authenticated()
-                .pathMatchers("/api/v1/ensembles/**").hasRole("USER")
+                .pathMatchers("/api/v1/ensembles/**").authenticated()
         ).oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
         serverHttpSecurity.csrf(csrfSpec -> csrfSpec.disable());
         return serverHttpSecurity.build();

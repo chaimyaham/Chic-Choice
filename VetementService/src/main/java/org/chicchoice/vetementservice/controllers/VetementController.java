@@ -21,7 +21,6 @@ public class VetementController {
     private final VetementService vetementService;
     private static final Logger logger = LoggerFactory.getLogger(VetementController.class);
 
-    @Autowired
     public VetementController(VetementService vetementService){
         this.vetementService=vetementService;
     }

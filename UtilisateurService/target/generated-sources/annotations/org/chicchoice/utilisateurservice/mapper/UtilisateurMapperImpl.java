@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-30T22:02:06+0000",
+    date = "2024-04-02T01:01:53+0000",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.10 (Amazon.com Inc.)"
 )
 @Component
@@ -23,9 +23,10 @@ public class UtilisateurMapperImpl implements UtilisateurMapper {
 
         utilisateur.id( utilisateurDto.getId() );
         utilisateur.email( utilisateurDto.getEmail() );
-        utilisateur.motDePasse( utilisateurDto.getMotDePasse() );
+        utilisateur.password( utilisateurDto.getPassword() );
         utilisateur.nom( utilisateurDto.getNom() );
         utilisateur.prenom( utilisateurDto.getPrenom() );
+        utilisateur.username( utilisateurDto.getUsername() );
         utilisateur.sexe( utilisateurDto.getSexe() );
         utilisateur.role( utilisateurDto.getRole() );
         utilisateur.ville( utilisateurDto.getVille() );
@@ -45,9 +46,10 @@ public class UtilisateurMapperImpl implements UtilisateurMapper {
 
         utilisateurDto.id( utilisateur.getId() );
         utilisateurDto.email( utilisateur.getEmail() );
-        utilisateurDto.motDePasse( utilisateur.getMotDePasse() );
+        utilisateurDto.password( utilisateur.getPassword() );
         utilisateurDto.nom( utilisateur.getNom() );
         utilisateurDto.prenom( utilisateur.getPrenom() );
+        utilisateurDto.username( utilisateur.getUsername() );
         utilisateurDto.sexe( utilisateur.getSexe() );
         utilisateurDto.role( utilisateur.getRole() );
         utilisateurDto.ville( utilisateur.getVille() );
@@ -69,14 +71,17 @@ public class UtilisateurMapperImpl implements UtilisateurMapper {
         if ( utilisateurDto.getEmail() != null ) {
             utilisateur.setEmail( utilisateurDto.getEmail() );
         }
-        if ( utilisateurDto.getMotDePasse() != null ) {
-            utilisateur.setMotDePasse( utilisateurDto.getMotDePasse() );
+        if ( utilisateurDto.getPassword() != null ) {
+            utilisateur.setPassword( utilisateurDto.getPassword() );
         }
         if ( utilisateurDto.getNom() != null ) {
             utilisateur.setNom( utilisateurDto.getNom() );
         }
         if ( utilisateurDto.getPrenom() != null ) {
             utilisateur.setPrenom( utilisateurDto.getPrenom() );
+        }
+        if ( utilisateurDto.getUsername() != null ) {
+            utilisateur.setUsername( utilisateurDto.getUsername() );
         }
         if ( utilisateurDto.getSexe() != null ) {
             utilisateur.setSexe( utilisateurDto.getSexe() );

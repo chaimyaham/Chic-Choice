@@ -1,9 +1,6 @@
 package org.chicchoice.mediaservice.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -14,7 +11,8 @@ import lombok.*;
 @Entity
 public class Media {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "sequence_media")
+    @SequenceGenerator(name = "sequence_media",sequenceName = "sequence_media",allocationSize = 1)
     private Long id;
     private String imageUrl;
 }

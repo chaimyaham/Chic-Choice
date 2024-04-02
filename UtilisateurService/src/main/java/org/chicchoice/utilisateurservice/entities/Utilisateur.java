@@ -17,9 +17,10 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private  String motDePasse;
+    private String password;
     private String nom;
     private String prenom;
+    private String username;
     @Enumerated(value = EnumType.STRING)
     private Sexe sexe;
     @Enumerated(value = EnumType.STRING)

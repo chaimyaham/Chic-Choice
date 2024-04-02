@@ -1,0 +1,11 @@
+
+“	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÜ³¶8Á™Ñãé1J$3ffa37f3-ac7c-455e-a313-2de9d7bc7c35
+n
+java:S1452!"&Remove usage of generic wildcard type.(·ì¬Æüÿÿÿÿ8Ö™Ñãé1J$eadfd766-3c15-4014-b413-c2185f008609
+„
+java:S3457$"AFormat specifiers should be used instead of string concatenation.(Ó³›8Ù™Ñãé1J$c25b5920-7f44-4912-89ed-207a54168c80
+„
+java:S3457%"AFormat specifiers should be used instead of string concatenation.(ş¶Âü8Ü™Ñãé1J$67548dc4-f6db-401a-889d-9e95f1e74b22
+‰
+java:S3457&"AFormat specifiers should be used instead of string concatenation.(å¹âçøÿÿÿÿ8»Òãé1J$dec46e3c-d4d8-4721-ae97-9d4036169609
+]	java:S125<"<This block of commented-out lines of code should be removed.(ô†¿ÿÿÿÿÿ8óä×ãé1

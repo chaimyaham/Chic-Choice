@@ -2,6 +2,7 @@ package org.chicchoice.vetementservice.services.impl;
 
 
 import com.simplon.media.MediaClient;
+import lombok.AllArgsConstructor;
 import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
@@ -24,6 +25,7 @@ import java.util.Optional;
 
 
 @Service
+@AllArgsConstructor
 public class VetementService implements IVetementService {
     private final VetementRepository vetementRepository;
     private final VetementMapper vetementMapper;
@@ -31,15 +33,15 @@ public class VetementService implements IVetementService {
     private final MediaClient mediaClient;
     private static final Logger logger = LoggerFactory.getLogger(VetementService.class);
 
-    @Autowired
-    public VetementService(VetementRepository vetementRepository,
-                           VetementMapper vetementMapper,
-                           EnsembleService ensembleService,MediaClient mediaClient){
-        this.vetementRepository=vetementRepository;
-        this.vetementMapper=vetementMapper;
-        this.ensembleService=ensembleService;
-        this.mediaClient=mediaClient;
-    }
+//    @Autowired
+//    public VetementService(VetementRepository vetementRepository,
+//                           VetementMapper vetementMapper,
+//                           EnsembleService ensembleService,MediaClient mediaClient){
+//        this.vetementRepository=vetementRepository;
+//        this.vetementMapper=vetementMapper;
+//        this.ensembleService=ensembleService;
+//        this.mediaClient=mediaClient;
+//    }
 
     @Override
     public Page<VetementResponseDto> getAllVetements(Pageable pageable) {
@@ -71,6 +73,7 @@ public class VetementService implements IVetementService {
     @Override
     public VetementResponseDto createVetement(VetementRequestDto vetementRequestDto) {
         try{
+            //todo check if the media with that mediaId already exist
             Optional<Vetement> vetement =vetementRepository.findByMediaId(vetementRequestDto.getMediaId());
             if(vetement.isPresent()){
                 logger.error("Vetement already exist");
@@ -90,6 +93,7 @@ public class VetementService implements IVetementService {
     @Override
     public VetementResponseDto getVetementById(Long id) {
         try {
+
             Optional<Vetement> article = vetementRepository.findById(id);
             if (article.isEmpty()){
                 logger.error("article with that id n'exist pas : {}",id);

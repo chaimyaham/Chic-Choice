@@ -13,7 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Builder
 public class MediaDto implements Serializable {
-    @NotNull
     @Positive
     Long id;
     @NotNull

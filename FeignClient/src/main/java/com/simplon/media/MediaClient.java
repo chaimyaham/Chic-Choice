@@ -6,17 +6,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 @FeignClient(name = "MEDIA")
 public interface MediaClient {
+//    requestPart instead of request param
 
-    @PostMapping
+    @PostMapping("/api/v1/media")
     public ResponseEntity<MediaDto> upload(@RequestParam("file") MultipartFile multipartFile);
 
-    @GetMapping("/{id}")
-    public ResponseEntity<MediaDto> getMediaById(@PathVariable Long id);
+    @GetMapping("/api/v1/media/{id}")
+    public ResponseEntity<MediaDto> getMediaById(@PathVariable("id") Long id);
 
-    @PutMapping("/{id}")
-    public ResponseEntity<MediaDto> updateMedia(@RequestParam("file") MultipartFile multipartFile, @PathVariable Long id);
+    @PutMapping("/api/v1/media/{id}")
+    public ResponseEntity<MediaDto> updateMedia(@RequestParam("file") MultipartFile multipartFile, @PathVariable("id") Long id);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMediaById(@PathVariable Long id);
+    @DeleteMapping("/api/v1/media/{id}")
+    public ResponseEntity<Void> deleteMediaById(@PathVariable("id") Long id);
 
 }

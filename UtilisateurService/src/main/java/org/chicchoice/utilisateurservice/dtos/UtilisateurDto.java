@@ -1,9 +1,9 @@
 package org.chicchoice.utilisateurservice.dtos;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.chicchoice.utilisateurservice.enums.Sexe;
 import org.chicchoice.utilisateurservice.enums.UtilisateurRole;
@@ -13,40 +13,55 @@ import java.io.Serializable;
 /**
  * DTO for {@link org.chicchoice.utilisateurservice.entities.Utilisateur}
  */
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class UtilisateurDto implements Serializable {
-    @Positive(message = "L'identifiant doit etre un nombre positif.")
     Long id;
 
-    @NotBlank(message = "L'adresse email ne peut pas etre vide.")
-    @Email(message = "L'adresse email doit etre valide.")
+    @NotNull
+    @Email
     String email;
 
-    @NotBlank(message = "Le mot de passe ne peut pas etre vide.")
-    String motDePasse;
+    @NotNull
+    @Size(min = 8, message = "Password must be at least 8 characters long")
+    @Pattern.List({
+            @Pattern(regexp = ".*\\d.*", message = "Password must contain at least one digit"),
+            @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter"),
+            @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter"),
+            @Pattern(regexp = ".*[!@#$%^&*()\\-_=+{};:,<.>\\[\\]\\\\|/?~].*", message = "Password must contain at least one special character")
+    })
+    String password;
 
-    @NotBlank(message = "Le nom ne peut pas etre vide.")
+    @NotNull
+    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters long")
     String nom;
 
-    @NotBlank(message = "Le prenom ne peut pas etre vide.")
+    @NotNull
+    @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters long")
     String prenom;
 
-    @NotNull(message = "Le sexe ne peut pas etre vide.")
+    @NotNull
+    @Size(min = 5, max = 50, message = "Username must be between 5 and 50 characters long")
+    String username;
+
+    @NotNull
     Sexe sexe;
 
-    @NotNull(message = "Le role ne peut pas etre vide.")
+    @NotNull
     UtilisateurRole role;
 
-    @NotBlank(message = "La ville ne peut pas etre vide.")
+    @NotNull
+    @Size(min = 2, max = 50, message = "City must be between 2 and 50 characters long")
     String ville;
 
-    @NotBlank(message = "Le pays ne peut pas etre vide.")
+    @NotNull
+    @Size(min = 2, max = 50, message = "Country must be between 2 and 50 characters long")
     String pays;
 
-    @NotBlank(message = "Les preferences de style ne peuvent pas etre vides.")
+    @Size(max = 100, message = "Preferences style cannot exceed 100 characters")
     String preferencesStyle;
 }

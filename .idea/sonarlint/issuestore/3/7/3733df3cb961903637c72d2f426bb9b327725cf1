@@ -1,0 +1,6 @@
+
+l
+java:S2629_"$Invoke method(s) only conditionally.(û…„øÿÿÿÿ8£“ıâé1J$a2d196c0-b887-451d-88a6-73a6fa7abfe7
+˜	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ö¡”Îùÿÿÿÿ8ŞÁëâé1J$1782379f-d9ad-428b-a2d0-2f41f0bcc613
+©
+java:S3457_"aNo need to call "toString()" method as formatting and string conversion is done by the Formatter.(û…„øÿÿÿÿ8•”ıâé1J$0992112f-6136-4df7-9ace-b1431526622a
