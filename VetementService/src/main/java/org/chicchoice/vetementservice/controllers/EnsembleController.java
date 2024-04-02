@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import org.chicchoice.vetementservice.dtos.EnsembleDto;
 import org.chicchoice.vetementservice.dtos.VetementDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
+import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.services.impl.EnsembleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,6 +106,17 @@ public class EnsembleController {
         ensembleService.marquerUnEnsembleCommeFavori(ensembleId);
         logger.info("marquer L'Ensemble Comme Favori id :{}- Controleur",ensembleId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EnsembleResponseDto> modifierEnsemble(
+            @PathVariable Long id,
+            @RequestBody @Valid EnsembleRequestDto ensemble
+    ){
+        logger.info("modifier ensemble controller ");
+        EnsembleResponseDto ensembleDto = ensembleService.modifierEnsemble(id,ensemble);
+        return new ResponseEntity<>(ensembleDto, HttpStatus.OK);
+
     }
 
 

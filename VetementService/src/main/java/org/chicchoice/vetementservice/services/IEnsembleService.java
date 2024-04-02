@@ -22,5 +22,6 @@ public interface IEnsembleService {
     void supprimerVetementDeTousEnsembles(Vetement vetement);
     //todo ajouter la method pour recuperer la list des vetement deja porter dans une temperature percise
    //todo ajouter function get ensemble by id
+    EnsembleResponseDto modifierEnsemble(Long id,EnsembleRequestDto ensembleRequestDto);
 
 }

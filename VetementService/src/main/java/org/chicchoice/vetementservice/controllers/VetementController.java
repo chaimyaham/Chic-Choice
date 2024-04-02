@@ -98,4 +98,15 @@ public class VetementController {
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+        public ResponseEntity<VetementResponseDto> modifierrVetement(
+                @PathVariable Long id,
+                @RequestBody @Valid VetementRequestDto vetement
+    ){
+            logger.info("modifier vetement controller ");
+            VetementResponseDto vetementDto = vetementService.modifierVetement(id,vetement);
+            return new ResponseEntity<>(vetementDto, HttpStatus.OK);
+
+    }
+
 }

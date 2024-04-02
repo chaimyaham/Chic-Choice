@@ -16,23 +16,6 @@ spring:
             - Path=/api/v1/ensembles/**
   security:
     oauth2:
-      client:
-        provider:
-          keycloak:
-            token-uri: http://localhost:7080/realms/chic-choice/protocol/openid-connect/token
-            authorization-uri: http://localhost:7080/realms/chic-choice/protocol/openid-connect/auth
-            user-name-attribute: preferred_username
-            user-info-uri: http://localhost:7080/realms/chic-choice/protocol/openid-connect/userinfo
-            jwk-set-uri: http://localhost:7080/realms/chic-choice/protocol/openid-connect/certs
-            user-info-authentication-method: header
-        registration:
-          chichoice-app:
-            provider: keycloak
-            client-id: chichoice-app
-            client-secret: SR0xpaFdZscvEfrqHyKLta69LIPEpoWg
-            authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:7080/login/oauth2/code/keycloak
-            scope: openid
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:7080/realms/chic-choice/protocol/openid-connect/certs

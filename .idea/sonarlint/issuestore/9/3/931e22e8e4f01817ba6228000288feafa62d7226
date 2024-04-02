@@ -1,2 +1,12 @@
 
 ƒ	java:S125D"<This block of commented-out lines of code should be removed.(ÛøŸºûÿÿÿÿ8Ç§¸ãé1J$535563be-e557-462b-ab23-3d0e6e6343ff
+‡
+java:S1128"eRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.EmailAlreadyExistsException'.(äÉ ¸ÿÿÿÿÿ8éòÕøé1
+ˆ
+java:S1128"fRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.UtilisateurNotFoundException'.(®¦÷‡şÿÿÿÿ8êòÕøé1
+c
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8êòÕøé1
+g
+java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8êòÕøé1
+V
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ëòÕøé1

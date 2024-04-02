@@ -22,5 +22,6 @@ public interface IVetementService {
     //todo ajouter fonction getallbycolor and userid
     //todo the ensemble that it will be created should be with the same user id as vetement
 
+    VetementResponseDto modifierVetement(Long id,VetementRequestDto vetementRequestDto);
 
 }

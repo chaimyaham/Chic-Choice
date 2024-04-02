@@ -135,13 +135,10 @@ public class VetementService implements IVetementService {
         try {
             // Verifier si l'article existe
             vetementRepository.findById(vetementId).ifPresentOrElse(vetement -> {
-                if (!vetement.isFavoris()) {
-                    vetement.setFavoris(true);
+                vetement.setFavoris(!vetement.isFavoris());
                     vetementRepository.save(vetement);
                     logger.info("vetement marque comme favoris  : {}", vetementId);
-                } else {
-                    logger.warn("vetement marque comme favoris: {}", vetementId);
-                }
+
             }, () -> {
                 logger.error("vetement non trouvé avec cet ID : {}", vetementId);
                 throw new ResourceNotFoundException("vetement", "avec cet ID n'existe pas", vetementId.toString());
@@ -190,6 +187,32 @@ public class VetementService implements IVetementService {
         }catch(Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetement");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements parCategory.", e);
+        }
+    }
+
+    @Override
+    public VetementResponseDto modifierVetement(Long id, VetementRequestDto vetementRequestDto) {
+        try{
+
+            Optional<Vetement> vetement =vetementRepository.findById(id);
+            if(vetement.isEmpty()){
+                logger.error("Vetement with that id {} does not exist",id);
+                throw new ResourceNotFoundException("vetement","Vetement with that id does not exist",id.toString());
+            }
+            Vetement existingVetement = vetement.get();
+            existingVetement.setNote(vetementRequestDto.getNote());
+            existingVetement.setMediaId(vetementRequestDto.getMediaId());
+            existingVetement.setFavoris(vetementRequestDto.getFavoris());
+            existingVetement.setMarque(vetementRequestDto.getMarque());
+            existingVetement.setCategory(vetementRequestDto.getCategory());
+            existingVetement.setDate_d_ajout(LocalDateTime.now());
+
+            Vetement savedVetement = vetementRepository.save(existingVetement);
+            logger.info("Vetement mis a jour avec success");
+            return vetementMapper.toDto1(savedVetement);
+        }catch(Exception e){
+            logger.error("Error encontre lors de la modification de cet article");
+            throw new ServiceException("Vetement","Une erreur s'est produite lors de la modification de cet article.", e);
         }
     }
 }

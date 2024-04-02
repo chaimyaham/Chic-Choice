@@ -133,14 +133,10 @@ public class EnsembleService implements IEnsembleService {
             //todo je dois verifier le user id before
             // Verifier si l'ensemble existe
             ensembleRepository.findById(ensembleId).ifPresentOrElse(ensemble -> {
-                if (!ensemble.isFavoris()) {
-                    ensemble.setFavoris(true);
-                    // Enregistrer les modifications
+                    ensemble.setFavoris(!ensemble.isFavoris());
                     ensembleRepository.save(ensemble);
                     logger.info("ensemble marque comme favoris  : {}", ensembleId);
-                } else {
-                    logger.warn("ensemble marque comme favoris: {}", ensembleId);
-                }
+
             }, () -> {
                 logger.error("Ensemble non trouvé avec cet ID : {}", ensembleId);
                 throw new ResourceNotFoundException("Ensemble", "avec cet ID n'existe pas", ensembleId.toString());
@@ -223,6 +219,30 @@ public class EnsembleService implements IEnsembleService {
         } catch (Exception e) {
             logger.error("Erreur lors de la suppression de vetement de tous les ensemble", e);
             throw new ServiceException("Ensemble", "Erreur lors de la suppression d'un vetement de tous les ensembles.", e);
+        }
+    }
+
+    @Override
+    public EnsembleResponseDto modifierEnsemble(Long id, EnsembleRequestDto ensembleRequestDto) {
+        try {
+           Optional<Ensemble> existingensemble=ensembleRepository.findById(id);
+            if(existingensemble.isEmpty()){
+                logger.warn("ensemble with that id {} doesn't exist",id);
+                throw new ResourceNotFoundException("ensemble","ensemble with that id {} doesn't exist",id.toString());
+            }
+            Ensemble modifiedEnsemble= existingensemble.get();
+            modifiedEnsemble.setNomDeLEnsemble(ensembleRequestDto.getNomDeLEnsemble());
+            modifiedEnsemble.setCreatedAt(LocalDateTime.now());
+            modifiedEnsemble.setFavoris(ensembleRequestDto.getFavoris());
+            Ensemble savedEnsemble= ensembleRepository.save(modifiedEnsemble);
+            logger.info("ensemble modifier avec succes");
+            return  ensembleMapper.toDto1(savedEnsemble);
+        } catch (DataIntegrityViolationException e) {
+            logger.error("Erreur lors de la modificattion l ensemble : violation de contrainte d'integrite des donnees", e);
+            throw new ServiceException("Ensemble", "Une erreur de violation de contrainte d'integrite des donnees est produite lors de la modification et de l ensemble.", e);
+        } catch (Exception e) {
+            logger.error("Erreur lors de la modification de l ensemble", e);
+            throw new ServiceException("Ensemble", "Une erreur s'est produite lors de la modification de l'ensemble.", e);
         }
     }
 
