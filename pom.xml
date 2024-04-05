@@ -19,7 +19,6 @@
       <module>ConfigService</module>
     <module>Discovery</module>
       <module>Gateway</module>
-      <module>authenticationService</module>
       <module>FeignClient</module>
   </modules>
 

@@ -19,10 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Transactional
@@ -73,6 +70,21 @@ public class KeycloakServiceImpl implements KeycloakService {
         userRepresentation.setLastName(keycloakUser.getLastName());
         userRepresentation.setEmail(keycloakUser.getEmail());
         userRepresentation.setUsername(keycloakUser.getUsername());
+//ajouter le genre
+        String gender = keycloakUser.getSexe().name();
+        String city = keycloakUser.getCity();
+        String country = keycloakUser.getCountry();
+        String preferencesStyle=keycloakUser.getPreferencesStyle();
+
+        Map<String, List<String>> attributes = new HashMap<>();
+        attributes.put("gender", Collections.singletonList(gender));
+        attributes.put("region", Collections.singletonList(city));
+        attributes.put("country", Collections.singletonList(country));
+        attributes.put("style",Collections.singletonList(preferencesStyle));
+
+        userRepresentation.setAttributes(attributes);
+
+
         HashMap<String, List<String>> clientRoles = new HashMap<>();
         clientRoles.put(KeycloakConfig.clientId, Collections.singletonList(keycloakUser.getRole()));
         userRepresentation.setClientRoles(clientRoles);

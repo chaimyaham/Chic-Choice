@@ -10,11 +10,13 @@ import org.chicchoice.utilisateurservice.entities.Utilisateur;
 import org.chicchoice.utilisateurservice.repository.UtilisateurRepository;
 import org.chicchoice.utilisateurservice.services.KeycloakService;
 import org.chicchoice.utilisateurservice.services.UtilisateurService;
+import org.keycloak.representations.idm.CredentialRepresentation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,6 +51,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         keycloakUser.setPassword(signUpRequest.getPassword());
         keycloakUser.setRole(signUpRequest.getRole().name());
         keycloakUser.setUsername(signUpRequest.getUsername());
+        keycloakUser.setSexe(signUpRequest.getSexe());
+        keycloakUser.setCity(signUpRequest.getVille());
+        keycloakUser.setCountry(signUpRequest.getPays());
+        keycloakUser.setPreferencesStyle(signUpRequest.getPreferencesStyle());
 
         int status = keycloakService.createUserWithKeycloak(keycloakUser);
 
@@ -56,6 +62,10 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
             LOGGER.info("UserServiceImpl | signUpUser | status : {}" , status);
             Utilisateur signUpUser = utilisateurMapper.toEntity(signUpRequest);
+
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String hashedPassword = encoder.encode(signUpRequest.getPassword());
+            signUpUser.setPassword(hashedPassword);
             utilisateurRepository.save(signUpUser);
             return "Sign Up completed";
         }

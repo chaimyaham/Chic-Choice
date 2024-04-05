@@ -141,8 +141,6 @@ FGateway/src/main/java/org/chicchoice/config/KeycloakRoleConverter.java,5/e/5e1
 PMediaService/src/main/java/org/chicchoice/mediaservice/service/ImageService.java,4/2/42e3ff015cbe2f9522b2102a7890fc8b8731d8f9
 †
 VMediaService/src/main/java/org/chicchoice/mediaservice/controller/ImageController.java,4/d/4d19d7c5991b074fc92fe724b4e96feeda718016
-M
-authenticationService/pom.xml,e/1/e1efb463cef3213ffc7847c56b1aafaba99a1c6e
 z
 JMediaService/src/main/java/org/chicchoice/mediaservice/entities/Media.java,2/b/2be2cdb3f257d3ff31fd8ca4197c67cd726663bc
 y

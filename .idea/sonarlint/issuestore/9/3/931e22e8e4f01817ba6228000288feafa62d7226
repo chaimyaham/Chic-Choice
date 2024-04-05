@@ -1,12 +1,14 @@
 
-ƒ	java:S125D"<This block of commented-out lines of code should be removed.(ÛøŸºûÿÿÿÿ8Ç§¸ãé1J$535563be-e557-462b-ab23-3d0e6e6343ff
+ƒ	java:S125N"<This block of commented-out lines of code should be removed.(ÛøŸºûÿÿÿÿ8šŠ·õê1J$70f5c52e-2829-4091-909d-e9c4a8b13155
 ‡
-java:S1128"eRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.EmailAlreadyExistsException'.(äÉ ¸ÿÿÿÿÿ8éòÕøé1
+java:S1128"eRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.EmailAlreadyExistsException'.(äÉ ¸ÿÿÿÿÿ8²£·õê1
 ˆ
-java:S1128"fRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.UtilisateurNotFoundException'.(®¦÷‡şÿÿÿÿ8êòÕøé1
+java:S1128"fRemove this unused import 'org.chicchoice.utilisateurservice.exceptions.UtilisateurNotFoundException'.(®¦÷‡şÿÿÿÿ8³£·õê1
+s
+java:S1128"VRemove this unused import 'org.keycloak.representations.idm.CredentialRepresentation'.(Íö¨8³£·õê1
 c
-java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8êòÕøé1
+java:S1128"ARemove this unused import 'org.springframework.data.domain.Page'.(˜âüÿÿÿÿ8³£·õê1
 g
-java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8êòÕøé1
+java:S1128"ERemove this unused import 'org.springframework.data.domain.Pageable'.(‡ë‚Öıÿÿÿÿ8³£·õê1
 V
-java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8ëòÕøé1
+java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8³£·õê1
