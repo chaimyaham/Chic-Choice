@@ -1,25 +1,5 @@
-server:
-  port: 8088
-
 spring:
   application:
     name: utilisateur
-  datasource:
-    url: jdbc:postgresql://localhost:5227/utilisateur_microservice
-    username: utilisateur_microservice
-    password: utilisateur_microservice
-  data:
-    jpa:
-      repositories:
-        enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-
-debug: false
-
+  config:
+    import: configserver:http://localhost:3000/

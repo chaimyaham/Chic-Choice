@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.config.Customizer;
+
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -21,14 +21,15 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity){
-//        i can do permittAll() instead of authenticated()
-//        serverHttpSecurity.authorizeExchange(exchanges->exchanges.anyExchange().authenticated());
-//        serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
-        serverHttpSecurity.authorizeExchange(exchanges->exchanges.pathMatchers(HttpMethod.GET).permitAll()
-                .pathMatchers("/api/v1/vetements/**").authenticated()
-                .pathMatchers("/api/v1/ensembles/**").authenticated()
+        serverHttpSecurity.authorizeExchange(exchanges->exchanges
+                .pathMatchers(HttpMethod.POST, "/api/v1/users/login", "/api/v1/users/signup").permitAll()
+//                .pathMatchers(HttpMethod.GET).authenticated()
+                .pathMatchers("/api/v1/vetements/**").hasRole("USER")
+                .pathMatchers("/api/v1/ensembles/**").hasRole("USER")
+                .pathMatchers("/api/v1/couleurs/**").hasRole("ADMIN")
+                .pathMatchers("/api/v1/media/**").hasRole("USER")
         ).oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
-        serverHttpSecurity.csrf(csrfSpec -> csrfSpec.disable());
+        serverHttpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable);
         return serverHttpSecurity.build();
     }
 
