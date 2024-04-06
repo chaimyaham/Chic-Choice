@@ -1,0 +1,45 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="createCouleurTable" author="chaimaa">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="couleur"/>
+            </not>
+        </preConditions>
+        <createTable tableName="couleur">
+            <column name="id" type="VARCHAR(255)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="nom" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hex" type="VARCHAR(255)">
+            </column>
+            <column name="red" type="VARCHAR(255)">
+            </column>
+            <column name="green" type="VARCHAR(255)">
+            </column>
+            <column name="blue" type="VARCHAR(255)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="loadDataFromCSV" author="chaimaa">
+        <loadData tableName="couleur"
+                  file="../../csv/couleur.csv"
+                  separator=","
+                  relativeToChangelogFile="true">
+            <column name="id" type="STRING"/>
+            <column name="nom" type="STRING"/>
+            <column name="hex" type="STRING"/>
+            <column name="red" type="STRING"/>
+            <column name="green" type="STRING"/>
+            <column name="blue" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+
+</databaseChangeLog>

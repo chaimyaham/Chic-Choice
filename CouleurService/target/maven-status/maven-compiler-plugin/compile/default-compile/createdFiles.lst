@@ -1,0 +1,10 @@
+org/chicchoice/CouleurService/controller/CouleurController.class
+org/chicchoice/CouleurService/CouleurServiceApplication.class
+org/chicchoice/CouleurService/dto/CouleurMapper.class
+org/chicchoice/CouleurService/services/CouleurService.class
+org/chicchoice/CouleurService/entities/Couleur.class
+org/chicchoice/CouleurService/dto/CouleurMapperImpl.class
+org/chicchoice/CouleurService/dto/CouleurDto.class
+org/chicchoice/CouleurService/dto/CouleurDto$CouleurDtoBuilder.class
+org/chicchoice/CouleurService/services/CouleurServiceImpl.class
+org/chicchoice/CouleurService/repository/CouleurRepository.class

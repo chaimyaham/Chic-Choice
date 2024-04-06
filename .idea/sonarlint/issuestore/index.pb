@@ -29,14 +29,8 @@ F
 CouleurService/pom.xml,5/3/53c8bc0b78054f7890ccb34853839782c1ce49ed
 â
 YCouleurService/src/main/java/org/chicchoice/CouleurService/CouleurServiceApplication.java,9/8/989c0b2f83f6057ced40564b22f8674af036adb1
-ä
-ZCouleurService/src/main/java/org/chicchoice/CouleurService/entities/ChangementCouleur.java,6/a/6a40d5ad0f5aa392995245ebd82a782c75955c17
 Ä
 PCouleurService/src/main/java/org/chicchoice/CouleurService/entities/Couleur.java,a/a/aa1232a36dd6bfa0cd5fc09d15b6a7579152d066
-
-OCouleurService/src/main/java/org/chicchoice/CouleurService/dtos/CouleurDto.java,2/5/25579b3807722db2df06afddfab057a89095ce58
-â
-YCouleurService/src/main/java/org/chicchoice/CouleurService/dtos/ChangementCouleurDto.java,3/a/3a03305ee90571dde21e8b28433036dd593e905c
 J
 UtilisateurService/pom.xml,2/1/21856b8d74ad0e7fe1450331bd45a6b84cbea4d7
 ï
@@ -69,8 +63,6 @@ nPlanifiactionService/src/main/java/org/chicchoice/planificationservice/reposito
 VMeteoService/src/main/java/org/chicchoice/meteoservice/repository/MeteoRepository.java,8/d/8d4ffd9cc357ab3d196cd0ef3e9ff07457a7482e
 å
 \CouleurService/src/main/java/org/chicchoice/CouleurService/repository/CouleurRepository.java,5/6/56664058fb0babfe04150fae664467f8afb9b5c6
-ñ
-fCouleurService/src/main/java/org/chicchoice/CouleurService/repository/ChangementCouleurRepository.java,e/5/e53e2dda1c395e77c871b243973dcea9809c2905
 ã
 [VetementService/src/main/java/org/chicchoice/vetementservice/services/IVetementService.java,f/8/f8e6e65d639be58a9e28a01269001a0db6c82344
 ã
@@ -185,3 +177,13 @@ lUtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/imp
 iUtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/impl/KeycloakServiceImpl.java,3/7/3733df3cb961903637c72d2f426bb9b327725cf1
 ô
 iUtilisateurService/src/main/java/org/chicchoice/utilisateurservice/controllers/UtilisateurController.java,f/e/fe4ef5d55a40f399796f05be759b7cec6396187b
+~
+NCouleurService/src/main/java/org/chicchoice/CouleurService/dto/CouleurDto.java,1/3/1387744f0ae4f616f9012acf467ad34924751f5b
+Å
+QCouleurService/src/main/java/org/chicchoice/CouleurService/dto/CouleurMapper.java,7/0/70638d9524c88aa768da51422f43b34b397d2443
+á
+WCouleurService/src/main/java/org/chicchoice/CouleurService/services/CouleurService.java,5/7/57bdf964132f33c8a94a9271fdc4e4d3bd949386
+ã
+[CouleurService/src/main/java/org/chicchoice/CouleurService/services/CouleurServiceImpl.java,3/2/324d279a9a01d266530431b554e5dcf61b219d2e
+å
+\CouleurService/src/main/java/org/chicchoice/CouleurService/controller/CouleurController.java,f/2/f2ebf46886578f074943b3ba46b42fd7c32a9da0
