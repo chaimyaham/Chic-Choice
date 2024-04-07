@@ -119,6 +119,14 @@ public class EnsembleController {
 
     }
 
+    @GetMapping("{id}")
+    public ResponseEntity<EnsembleResponseDto> getEnsembleById(@PathVariable Long id){
+        logger.info("recuperer ensemble controller par id : {}",id);
+        EnsembleResponseDto ensembleDto = ensembleService.getEnsembleById(id);
+        return new ResponseEntity<>(ensembleDto, HttpStatus.OK);
+
+    }
+
 
 
 }

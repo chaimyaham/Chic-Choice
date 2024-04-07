@@ -223,6 +223,21 @@ public class EnsembleService implements IEnsembleService {
     }
 
     @Override
+    public EnsembleResponseDto getEnsembleById(Long id) {
+        try{
+            Optional<Ensemble> existingEnsemble=ensembleRepository.findById(id);
+            if(existingEnsemble.isEmpty()){
+                throw new ResourceNotFoundException("Ensemble","Ensemble with that id doesn't exist",id.toString());
+            }
+            logger.info("recuperation de L' ensembles par ID : {}",id);
+            return ensembleMapper.toDto1(existingEnsemble.get());
+        }catch (Exception e){
+            logger.error("Erreur lors de la recuperaion de cet ensemble", e);
+            throw new ServiceException("Ensemble", "Une erreur s'est produite lors de la recuperaion de cet ensemble.", e);
+        }
+    }
+
+    @Override
     public EnsembleResponseDto modifierEnsemble(Long id, EnsembleRequestDto ensembleRequestDto) {
         try {
            Optional<Ensemble> existingensemble=ensembleRepository.findById(id);

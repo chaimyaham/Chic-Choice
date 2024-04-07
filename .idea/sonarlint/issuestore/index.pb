@@ -187,3 +187,17 @@ WCouleurService/src/main/java/org/chicchoice/CouleurService/services/CouleurServ
 [CouleurService/src/main/java/org/chicchoice/CouleurService/services/CouleurServiceImpl.java,3/2/324d279a9a01d266530431b554e5dcf61b219d2e
 å
 \CouleurService/src/main/java/org/chicchoice/CouleurService/controller/CouleurController.java,f/2/f2ebf46886578f074943b3ba46b42fd7c32a9da0
+ó
+gPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptions/ServiceException.java,d/7/d72041eeff2c5fa6580d91d51256b30766ab72cc
+ù
+mPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptions/GlobalExceptionHandler.java,a/9/a91810ecbf79cb1d072875d70d68b0e81ce4e30e
+ó
+gPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptions/ErrorResponseDto.java,b/1/b146899ba93d0a7cb656a8e4d25c4166e354223b
+†
+pPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptions/ResourceNotFoundException.java,0/4/040a68ddecf7b667dbe6a8ae6a230ac3ee566cc6
+r
+BFeignClient/src/main/java/com/simplon/vetement/EnsembleClient.java,c/5/c53c0e588e0cdfc1d57f41987bbe6c9008451966
+o
+?FeignClient/src/main/java/com/simplon/vetement/EnsembleDto.java,9/6/964abb9a4cc76754e2b02aab6e14247d5f163483
+w
+GFeignClient/src/main/java/com/simplon/vetement/EnsembleResponseDto.java,2/c/2c1cf9bb07ff92a63359fff15762a346b440a197

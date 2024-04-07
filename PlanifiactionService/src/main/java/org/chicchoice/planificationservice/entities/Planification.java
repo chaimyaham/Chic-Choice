@@ -3,17 +3,13 @@ package org.chicchoice.planificationservice.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -21,11 +17,11 @@ public class Planification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titre;
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
+    private LocalDateTime dateDebut;
+    private LocalDateTime dateFin;
     private String description;
     private Long utilisateurId;
+    private Long meteoId;
 
     @ElementCollection
     private List<Long> ensemblesIds;

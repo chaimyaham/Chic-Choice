@@ -84,6 +84,8 @@
             <artifactId>keycloak-admin-client</artifactId>
             <version>18.0.2</version>
         </dependency>
+
+
     </dependencies>
     <build>
         <plugins>

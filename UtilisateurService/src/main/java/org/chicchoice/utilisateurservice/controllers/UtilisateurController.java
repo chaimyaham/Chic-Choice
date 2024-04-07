@@ -1,18 +1,18 @@
 package org.chicchoice.utilisateurservice.controllers;
 
+
 import org.chicchoice.utilisateurservice.dtos.LoginRequest;
 import org.chicchoice.utilisateurservice.dtos.UtilisateurDto;
 import org.chicchoice.utilisateurservice.services.KeycloakService;
 import org.chicchoice.utilisateurservice.services.UtilisateurService;
-import org.chicchoice.utilisateurservice.services.impl.KeycloakServiceImpl;
+
 import org.keycloak.representations.AccessTokenResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
-
-
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 public class UtilisateurController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UtilisateurController.class);
-
     private final UtilisateurService userService;
     private final KeycloakService keycloakService;
 
@@ -31,11 +30,7 @@ public class UtilisateurController {
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUpUser(@RequestBody UtilisateurDto signUpRequest){
-
-        LOGGER.info("UserController | signUpUser is started");
-        LOGGER.info("UserController | signUpUser | SignUpRequest role : " + signUpRequest.getRole());
-        LOGGER.info("UserController | signUpUser | SignUpRequest email : " + signUpRequest.getEmail());
-        LOGGER.info("UserController | signUpUser | SignUpRequest name : " + signUpRequest.getNom());
+        LOGGER.info("UserController | signUpUser a demarre. Role: {}, Email: {}, Nom: {}", signUpRequest.getRole(), signUpRequest.getEmail(), signUpRequest.getNom());
         return ResponseEntity.ok(userService.signUpUser(signUpRequest));
     }
 
@@ -51,46 +46,22 @@ public class UtilisateurController {
         }
 
         LOGGER.info("UserController | login | Http Status Ok");
-
         return ResponseEntity.ok(accessTokenResponse);
     }
 
+    @GetMapping("{email}")
+    public ResponseEntity<UtilisateurDto> getUserByEmail(@PathVariable("email") String email) {
+        LOGGER.info("UserController | getUserByEmail a demarree");
+        UtilisateurDto utilisateurDto = userService.recupererUtilisateurParEmail(email);
+        return new ResponseEntity<>(utilisateurDto, HttpStatus.OK);
+    }
 
-//    @GetMapping("/info")
-//    public ResponseEntity<String> infoUser(){
-//
-//        LOGGER.info("UserController | infoUser is started");
-//
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//
-//        LOGGER.info("UserController | infoUser | auth toString : " + auth.toString());
-//        LOGGER.info("UserController | infoUser | auth getPrincipal : " + auth.getPrincipal());
-//
-//        KeycloakPrincipal principal = (KeycloakPrincipal)auth.getPrincipal();
-//        KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
-//        AccessToken accessToken = session.getToken();
-//
-//        String username = accessToken.getPreferredUsername();
-//        String email = accessToken.getEmail();
-//        String lastname = accessToken.getFamilyName();
-//        String firstname = accessToken.getGivenName();
-//        String realmName = accessToken.getIssuer();
-//        AccessToken.Access access = accessToken.getRealmAccess();
-//        Set<String> roles = access.getRoles();
-//
-//        String role = roles.stream()
-//                .filter(s -> s.equals("ROLE_USER") || s.equals("ROLE_ADMIN"))
-//                .findAny()
-//                .orElse("noElement");
-//
-//        LOGGER.info("UserController | infoUser | username : " + username);
-//        LOGGER.info("UserController | infoUser | email : " + email);
-//        LOGGER.info("UserController | infoUser | lastname : " + lastname);
-//        LOGGER.info("UserController | infoUser | firstname : " + firstname);
-//        LOGGER.info("UserController | infoUser | realmName : " + realmName);
-//        LOGGER.info("UserController | infoUser | firstRole : " + role);
-//
-//        return ResponseEntity.ok(role);
-//    }
+    @GetMapping
+    public ResponseEntity<Page<UtilisateurDto>> getAllUsers( @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        LOGGER.info("UserController | getAllUsers a demarree");
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<UtilisateurDto> utilisateurs = userService.recupererToutsLesUtilisateur(pageable);
+        return new ResponseEntity<>(utilisateurs, HttpStatus.OK);
+    }
 
 }

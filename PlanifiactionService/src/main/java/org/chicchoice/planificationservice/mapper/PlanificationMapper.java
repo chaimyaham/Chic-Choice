@@ -1,7 +1,7 @@
 package org.chicchoice.planificationservice.mapper;
 
-import org.chicchoice.planificationservice.entities.Planification;
 import org.chicchoice.planificationservice.dtos.PlanificationDto;
+import org.chicchoice.planificationservice.entities.Planification;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING)

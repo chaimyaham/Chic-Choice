@@ -1,7 +1,17 @@
 
-Ä
-java:S11863"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ö§ëÆ8ŞİÏè1J$adbd4183-64c4-49c2-868a-fd9d8511065d
+–
+java:S1192/"NDefine a constant instead of duplicating this literal "Planification" 4 times.(½×ğÿûÿÿÿÿ8ö‰‹²ë1J$e8e0402c-686c-4def-aa15-b70a92659a63
 É
-java:S1186B"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û°é°ÿÿÿÿÿ8ßİÏè1J$a04ccf4a-22e1-4b4e-942a-8052fe5ccd59
+java:S1186p"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û°é°ÿÿÿÿÿ8ëŠ‹²ë1J$8a52f21a-28ad-4c89-908e-eacd9ff2ab2f
 É
-java:S1186L"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Õ×Êßúÿÿÿÿ8àİÏè1J$a14ad681-aeed-435d-83d4-101fa2c5a990
+java:S1186z"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Õ×Êßúÿÿÿÿ8îŠ‹²ë1J$41891e20-e86e-4e33-8dad-8802c3d07ca6
+z
+java:S1135^"2Complete the task associated to this TODO comment.(Ú–ÚÃşÿÿÿÿ8¤‹‹²ë1J$48f1df86-e651-46c8-b7a0-c38807bdd8ba
+z
+java:S1135a"2Complete the task associated to this TODO comment.(¾¸£¢úÿÿÿÿ8¤‹‹²ë1J$9a75ca6e-7c29-42b6-af09-7fa522e0fa21
+›
+java:S2139c"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8¦‹‹²ë1J$c360ccab-808f-44fa-8359-33a6848e6287
+ˆ
+java:S1128"ERemove this unused import 'com.simplon.vetement.EnsembleResponseDto'.(•æ—Î8®‹‹²ë1J$ea3c6a62-3736-4464-b1b1-9f4fb363cfab
+z
+java:S1068"2Remove this unused "ensembleClient" private field.(œæ…Éÿÿÿÿÿ8³‹‹²ë1J$9db313d0-b380-4227-8d8b-7155a7121164

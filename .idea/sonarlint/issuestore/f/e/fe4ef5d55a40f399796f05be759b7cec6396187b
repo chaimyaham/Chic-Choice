@@ -1,13 +1,4 @@
 
-“	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÜ³¶8Á™Ñãé1J$97adfe1d-8bfa-4abb-a78b-d751fce81cf5
+“	java:S116"QRename this field "LOGGER" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(üÜ³¶8¥Ş×®ë1J$290d0ae8-60cd-4213-9b49-665b5035dd3e
 n
-java:S1452!"&Remove usage of generic wildcard type.(·ì¬Æüÿÿÿÿ8Ö™Ñãé1J$70ad137f-cc23-4f62-ac7b-8674e20938e2
-„
-java:S3457$"AFormat specifiers should be used instead of string concatenation.(Ó³›8Ù™Ñãé1J$f61fbf98-2b06-4fb2-ab97-22fa9042f980
-„
-java:S3457%"AFormat specifiers should be used instead of string concatenation.(ş¶Âü8Ü™Ñãé1J$16bbcff2-8162-409a-839d-3857b9e66e5c
-‰
-java:S3457&"AFormat specifiers should be used instead of string concatenation.(å¹âçøÿÿÿÿ8»Òãé1J$90b8c501-ed75-487a-9b46-5fad88cbb601
-ƒ	java:S125<"<This block of commented-out lines of code should be removed.(ô†¿ÿÿÿÿÿ8óä×ãé1J$19d8d3a2-57b1-4d9a-adf7-7b96047872f1
-£
-java:S1128"`Remove this unused import 'org.chicchoice.utilisateurservice.services.impl.KeycloakServiceImpl'.(ğÏ¿Ä8íğî÷é1J$a3ccb2b8-fff2-404e-ace4-e1d910337a1a
+java:S1452 "&Remove usage of generic wildcard type.(·ì¬Æüÿÿÿÿ8¬Ş×®ë1J$b8757c14-92b4-43de-9ff1-6fdf80b2a68e
