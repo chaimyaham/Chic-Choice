@@ -23,12 +23,16 @@ public class SecurityConfig {
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity){
         serverHttpSecurity.authorizeExchange(exchanges->exchanges
                 .pathMatchers(HttpMethod.POST, "/api/v1/users/login", "/api/v1/users/signup").permitAll()
-                        .pathMatchers(HttpMethod.GET, "/api/v1/users","/api/v1/users/**").hasRole("ADMIN")
+                .pathMatchers(HttpMethod.GET, "/api/v1/users","/api/v1/users/**").hasRole("ADMIN")
                 .pathMatchers(HttpMethod.GET).authenticated()
                 .pathMatchers("/api/v1/vetements/**").hasRole("USER")
                 .pathMatchers("/api/v1/ensembles/**").hasRole("USER")
                 .pathMatchers("/api/v1/couleurs/**").hasRole("ADMIN")
                 .pathMatchers("/api/v1/media/**").hasRole("USER")
+                .pathMatchers(HttpMethod.POST,"/api/v1/planfications/**").authenticated()
+                .pathMatchers(HttpMethod.DELETE,"/api/v1/planfications/**").authenticated()
+                .pathMatchers(HttpMethod.PUT,"/api/v1/planfications/**").authenticated()
+                .pathMatchers("/api/v1/planfications/**").hasRole("USER")
         ).oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(grantedAuthoritiesExtractor())));
         serverHttpSecurity.csrf(ServerHttpSecurity.CsrfSpec::disable);
         return serverHttpSecurity.build();

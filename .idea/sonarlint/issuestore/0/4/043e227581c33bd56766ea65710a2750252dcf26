@@ -1,17 +1,7 @@
 
 –
-java:S1192/"NDefine a constant instead of duplicating this literal "Planification" 4 times.(½×ğÿûÿÿÿÿ8ö‰‹²ë1J$e8e0402c-686c-4def-aa15-b70a92659a63
-É
-java:S1186p"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Û°é°ÿÿÿÿÿ8ëŠ‹²ë1J$8a52f21a-28ad-4c89-908e-eacd9ff2ab2f
-É
-java:S1186z"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Õ×Êßúÿÿÿÿ8îŠ‹²ë1J$41891e20-e86e-4e33-8dad-8802c3d07ca6
-z
-java:S1135^"2Complete the task associated to this TODO comment.(Ú–ÚÃşÿÿÿÿ8¤‹‹²ë1J$48f1df86-e651-46c8-b7a0-c38807bdd8ba
-z
-java:S1135a"2Complete the task associated to this TODO comment.(¾¸£¢úÿÿÿÿ8¤‹‹²ë1J$9a75ca6e-7c29-42b6-af09-7fa522e0fa21
-›
-java:S2139c"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8¦‹‹²ë1J$c360ccab-808f-44fa-8359-33a6848e6287
-ˆ
-java:S1128"ERemove this unused import 'com.simplon.vetement.EnsembleResponseDto'.(•æ—Î8®‹‹²ë1J$ea3c6a62-3736-4464-b1b1-9f4fb363cfab
-z
-java:S1068"2Remove this unused "ensembleClient" private field.(œæ…Éÿÿÿÿÿ8³‹‹²ë1J$9db313d0-b380-4227-8d8b-7155a7121164
+java:S11926"NDefine a constant instead of duplicating this literal "Planification" 7 times.(½×ğÿûÿÿÿÿ8ğû™Ùë1J$bd65b43c-da0c-4d52-ac6f-0876453242cc
+œ
+java:S2139¤"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ëı™Ùë1J$c7da4319-33e5-4d56-b901-54901fa813b9
+œ
+java:S2139´"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Ì´Úë1J$a394437b-a689-4d1e-b39d-f6d15ba83b89

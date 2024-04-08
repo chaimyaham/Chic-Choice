@@ -197,7 +197,5 @@ gPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptio
 pPlanifiactionService/src/main/java/org/chicchoice/planificationservice/exceptions/ResourceNotFoundException.java,0/4/040a68ddecf7b667dbe6a8ae6a230ac3ee566cc6
 r
 BFeignClient/src/main/java/com/simplon/vetement/EnsembleClient.java,c/5/c53c0e588e0cdfc1d57f41987bbe6c9008451966
-o
-?FeignClient/src/main/java/com/simplon/vetement/EnsembleDto.java,9/6/964abb9a4cc76754e2b02aab6e14247d5f163483
 w
 GFeignClient/src/main/java/com/simplon/vetement/EnsembleResponseDto.java,2/c/2c1cf9bb07ff92a63359fff15762a346b440a197

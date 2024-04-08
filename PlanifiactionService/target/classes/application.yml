@@ -1,32 +1,5 @@
-server:
-  port: 8086
-
 spring:
   application:
     name: planification
-  datasource:
-    url: jdbc:postgresql://localhost:5225/planification_microservice
-    username: planification_microservice
-    password: planification_microservice
-  data:
-    jpa:
-      repositories:
-        enabled: true
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-
-
-debug: false
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-    fetch-registry: true
-    register-with-eureka: true
-
+  config:
+    import: configserver:http://localhost:3000/

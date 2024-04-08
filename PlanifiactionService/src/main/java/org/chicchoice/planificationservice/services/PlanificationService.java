@@ -13,12 +13,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
+
 @Service
+@Transactional
 public class PlanificationService implements IPlanificationService {
 
     private final PlanificationRepository planificationRepository;
@@ -77,49 +84,115 @@ public class PlanificationService implements IPlanificationService {
 
         }catch (Exception e){
             logger.error("Error encontrer lors de la suppression de cet plannifiication");
-            throw new ServiceException("planification","Une erreur s'est produite lors de la suppression de cet planification", e);
+            throw new ResourceNotFoundException("planification","planification with that id n'exist pas",id.toString());
         }
 
     }
 
     @Override
     public PlanificationDto ajouterUnEnsembleAUnePlanification(Long idPlanfifcation, Long idEnsemble) {
-       try {
+
            Optional<Planification> optionalPlanification = planificationRepository.findById(idPlanfifcation);
            if (optionalPlanification.isEmpty()) {
                logger.error("La planification avec cet identifiant n'existe pas : {}", idPlanfifcation);
                throw new ResourceNotFoundException("Planification", "La planification avec cet identifiant n'existe pas", idPlanfifcation.toString());
            }
+//       verifier si l ensemble with that id exist on the planfication and also on the ensembles list
+            ResponseEntity<EnsembleResponseDto> existingEnsemble=ensembleClient.getEnsembleById(idEnsemble);
+           if (existingEnsemble.getStatusCode() != HttpStatus.OK) {
+               logger.error("L'ensemble avec cet identifiant n'existe pas : {}", idEnsemble);
+               throw new ResourceNotFoundException("Ensemble", "L'ensemble avec cet identifiant n'existe pas", idEnsemble.toString());
+           }
+           Planification planification = optionalPlanification.get();
+           List<Long> ensembleIds = planification.getEnsemblesIds();
+           if (ensembleIds.contains(idEnsemble)) {
+               logger.error("L'ensemble avec cet id: {}  deja ajouter dans la planififcation", idEnsemble);
+               throw new IllegalArgumentException("L'ensemble avec cet id: deja ajouter dans la planififcation");
+           }
+           ensembleIds.add(idEnsemble);
+           planification.setEnsemblesIds(ensembleIds);
+           Planification planififcationModifier=planificationRepository.save(planification);
+           logger.info("ensemble ajouter avec succes a cet planification");
+           return planificationMapper.toDto(planififcationModifier);
 
-//        todo verifier si l ensemble with that id exist on the planfication and also on the ensembles
-
-
-//        todo get the list of the ensembles id and add thet new id to the list
-
-       }catch(Exception e){
-           logger.error("Une erreur s'est produite lors de l'ajout d'un ensemble à une planification : ", e);
-           throw new ServiceException("Planification", "Une erreur s'est produite lors de l'ajout d'un ensemble à une planification", e);
-       }
-        return null;
     }
 
     @Override
     public PlanificationDto updatePlanification(PlanificationDto planificationDto, Long id) {
-        return null;
+        Optional<Planification> optionalPlanification = planificationRepository.findById(id);
+        if (optionalPlanification.isEmpty()) {
+            logger.error("Planification avec cet id {} n'existe pas", id);
+            throw new ResourceNotFoundException("Planification", "Planification avec cet id {} n'existe pas", id.toString());
+        }
+        Planification existingPlanification = optionalPlanification.get();
+        existingPlanification.setDateDebut(planificationDto.getDateDebut());
+        existingPlanification.setDateFin(planificationDto.getDateFin());
+        existingPlanification.setDescription(planificationDto.getDescription());
+        existingPlanification.setMeteoId(planificationDto.getMeteoId());
+        Planification savedPlanification = planificationRepository.save(existingPlanification);
+        logger.info("Planification avec l'identifiant {} mise à jour avec succes", id);
+        return planificationMapper.toDto(savedPlanification);
     }
 
     @Override
     public void supprimerEnsembleDePlanification(Long idPlanification, Long idEnsemble) {
+        Optional<Planification> optionalPlanification = planificationRepository.findById(idPlanification);
+        if (optionalPlanification.isEmpty()) {
+            logger.error("La planification avec l'identifiant {} n'existe pas", idPlanification);
+            throw new ResourceNotFoundException("Planification", "La planification avec cet identifiant n'existe pas", idPlanification.toString());
+        }
+        Planification planification = optionalPlanification.get();
+        List<Long> ensembleIds = planification.getEnsemblesIds();
+        if (!ensembleIds.contains(idEnsemble)) {
+            logger.error("L'ensemble avec l'identifiant {} n'exist pas dans cette planification {}", idEnsemble, idPlanification);
+            throw new ResourceNotFoundException("Ensemble", "L'ensemble avec l'identifiant {} n'exist pas dans cette planification", idEnsemble.toString());
+        }
+        ensembleIds.remove(idEnsemble);
+        planification.setEnsemblesIds(ensembleIds);
+        planificationRepository.save(planification);
+        logger.info("Ensemble avec l'identifiant {} supprime de la planification avec l id avec success  {}", idEnsemble, idPlanification);
 
     }
-
     @Override
     public PlanificationDto getPlanificationByDateAndUtilisateurId(LocalDate date, Long userId) {
-        return null;
+        try {
+            LocalDateTime startOfDay = date.atStartOfDay();
+            LocalDateTime endOfDay = startOfDay.plusDays(1).minusSeconds(1);
+            Optional<Planification> planificationOptional = planificationRepository.findFirstByDateDebutBetweenAndUtilisateurIdOrderByDateDebutAsc(startOfDay, endOfDay, userId);
+            return planificationOptional.map(planificationMapper::toDto)
+                    .orElseThrow(() -> new ResourceNotFoundException("Planification", "Aucune planification trouvée pour cette date et cet utilisateur", ""));
+        } catch (Exception e) {
+            logger.error("Une erreur s'est produite lors de la recherche des planifications par date et utilisateur", e);
+            throw new ServiceException("Erreur lors de la recherche des planifications par date et utilisateur","planification service", e);
+        }
     }
 
     @Override
     public void supprimerPlanificationsByUtilisateurId(Long userId) {
+        try {
+            List<Planification> planifications = planificationRepository.findAllByUtilisateurId(userId);
+            if (!planifications.isEmpty()) {
+                planificationRepository.deleteAllByUtilisateurId(userId);
+                logger.info("Suppression de toutes les planifications de l'utilisateur avec l'id {}", userId);
+            } else {
+                logger.warn("Aucune planification trouve pour cet utilisateur {}", userId);
+            }
+        } catch (Exception e) {
+            logger.error("Une erreur s'est produite lors de la suppression des planifications de l'utilisateur avec l'identifiant {}", userId, e);
+            throw new ServiceException("Erreur lors de la suppression des planifications de l'utilisateur", userId.toString(),e);
+        }
 
+    }
+
+    @Override
+    public Page<PlanificationDto> getAllPlanififcation(Pageable pageable) {
+        try {
+            Page<Planification> planifications = planificationRepository.findAll(pageable);
+            logger.info("recuperation de la liste des planification avec  succes");
+            return planifications.map(planificationMapper::toDto);
+        }catch (Exception e){
+            logger.error("une erreur est survenu lors de la recuperation de tout les planification ");
+            throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de tout les planification","service");
+        }
     }
 }

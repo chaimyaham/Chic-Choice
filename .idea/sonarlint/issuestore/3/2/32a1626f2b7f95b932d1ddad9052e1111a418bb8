@@ -1,43 +1,47 @@
 
 ¢
-java:S11926"ZDefine a constant instead of duplicating this literal " avec cet ID n existe pas" 3 times.(­½±Ÿÿÿÿÿÿ8Ñí¡²ë1J$b1a1f784-e2cc-4fc6-b1e2-c6b9603607f3
+java:S11926"ZDefine a constant instead of duplicating this literal " avec cet ID n existe pas" 3 times.(­½±Ÿÿÿÿÿÿ8Ñí¡²ë1J$a32682fa-71b5-4d11-86e4-c99097b10684
 À
-java:S1192°"wDefine a constant instead of duplicating this literal "Erreur lors de la recuperaion de la liste des ensemble" 3 times.(ô×¤éüÿÿÿÿ8Òí¡²ë1J$cb7b1311-f7e6-4c1a-a2c1-6105a64def44
+java:S1192°"wDefine a constant instead of duplicating this literal "Erreur lors de la recuperaion de la liste des ensemble" 3 times.(ô×¤éüÿÿÿÿ8Òí¡²ë1J$128c257d-7c83-489e-9931-4437746315cd
 Ñ
-java:S1192±"ŒDefine a constant instead of duplicating this literal "Une erreur s'est produite lors de la recuperaion de la liste des ensembles." 3 times.(à‚ŞÒ8Òí¡²ë1J$0298f9b0-e7d5-4861-ab45-3093ab42e174
+java:S1192±"ŒDefine a constant instead of duplicating this literal "Une erreur s'est produite lors de la recuperaion de la liste des ensembles." 3 times.(à‚ŞÒ8Òí¡²ë1J$73d8a684-36b7-4ea2-90ba-26e8865d6e9d
 ’
-java:S1192K"JDefine a constant instead of duplicating this literal "Ensemble" 17 times.(Ÿœöøıÿÿÿÿ8Óí¡²ë1J$8e0266f5-08a9-4a50-9dc0-cc1c09c3b6ab
+java:S1192K"JDefine a constant instead of duplicating this literal "Ensemble" 17 times.(Ÿœöøıÿÿÿÿ8Óí¡²ë1J$50b6f77f-a43b-49fb-a5f6-755fc64dec41
 ›
-java:S2139I"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8µï¡²ë1J$4b369de0-f50c-4b8b-898d-e10b1ccf422f
+java:S2139I"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8µï¡²ë1J$0f515b27-6814-4066-984e-6ac2f2e157c3
 ›
-java:S2139f"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Ãï¡²ë1J$8c194ed8-fcf2-4469-84a6-1b622cea9fce
+java:S2139f"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Ãï¡²ë1J$70e0ab7c-2d42-44e9-844d-079f307231a1
 ›
-java:S2139{"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Èï¡²ë1J$22ad6b39-e98a-4b93-b2d7-fea6118456f0
+java:S2139{"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Èï¡²ë1J$c2d46647-39a7-4179-ab05-1b3de6ab39a6
 {
-java:S1135…"2Complete the task associated to this TODO comment.(…´áÊúÿÿÿÿ8Îï¡²ë1J$33221152-57b3-4295-8bb8-efea22d33ba5
+java:S1135…"2Complete the task associated to this TODO comment.(…´áÊúÿÿÿÿ8Îï¡²ë1J$575244c0-d1e0-42bd-a431-a942b0ad6f85
 œ
-java:S2139"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Óï¡²ë1J$569e7fa7-4b40-4ba7-abb6-0179bafac3d6
+java:S2139"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Óï¡²ë1J$0c01ac32-730c-4100-859f-e3211e5774f3
 ¡
-java:S2139Ÿ"XEither log this exception and handle it, or rethrow it with some contextual information.(™‚ëšıÿÿÿÿ8Ûï¡²ë1J$c38b3dd6-f50a-4764-a7dd-9a6a7d044afe
+java:S2139Ÿ"XEither log this exception and handle it, or rethrow it with some contextual information.(™‚ëšıÿÿÿÿ8Ûï¡²ë1J$848bd078-1695-4a6e-a784-d1ed55cfba41
 œ
-java:S2139¢"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Üï¡²ë1J$2ad1db25-3922-47e9-a9b2-2c4543ddda29
+java:S2139¢"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8Üï¡²ë1J$21ab2d64-f4dc-4a23-b6f8-20e1da25d9bf
 œ
-java:S2139¯"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8åï¡²ë1J$af565788-bf67-44f4-9e03-2a68d49c6225
+java:S2139¯"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8åï¡²ë1J$761c3e5d-dcc4-46f8-b06d-0f0008f3528d
 {
-java:S1135¸"2Complete the task associated to this TODO comment.(¦‹ ßÿÿÿÿÿ8èï¡²ë1J$fb4d2c59-6c69-46db-8e48-37e2b351d3c1
+java:S1135¸"2Complete the task associated to this TODO comment.(¦‹ ßÿÿÿÿÿ8èï¡²ë1J$41e85989-9e62-44f0-a1b0-20cc5f4ef5d9
 œ
-java:S2139½"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8êï¡²ë1J$c9706663-cfef-4599-965c-08af7c566e79
+java:S2139½"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8êï¡²ë1J$e7580c03-53e4-4afa-9ac1-3126359ad63b
 v
-java:S1135Æ"2Complete the task associated to this TODO comment.(çØİõ8íï¡²ë1J$5f8a78d5-ddfb-431a-94d6-0310e9ab2ce4
+java:S1135Æ"2Complete the task associated to this TODO comment.(çØİõ8íï¡²ë1J$e359cd06-19f1-4d1d-8583-c6c0d2b4c68b
 œ
-java:S2139Ë"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ğï¡²ë1J$ee16fcec-6fd8-4e95-88b8-a167f7e381d9
+java:S2139Ë"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ğï¡²ë1J$257a9974-57d5-4403-aee0-a083279243cd
 œ
-java:S2139Û"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8øï¡²ë1J$c35f4801-0f52-43c2-8cde-bf435d232e66
+java:S2139Û"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8øï¡²ë1J$803a1b82-b53c-42ee-afc1-bc2edf2792cb
 œ
-java:S2139ê"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ÿï¡²ë1J$1f8e7fe4-95a0-47b0-acfb-b36f51a21be7
+java:S2139ê"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ÿï¡²ë1J$23287d1f-2df3-44cb-b5a5-13f09331a4df
 ¡
-java:S2139ÿ"XEither log this exception and handle it, or rethrow it with some contextual information.(™‚ëšıÿÿÿÿ8ğ¡²ë1J$51a605d7-59b0-4b2a-bf4d-19a7e527853f
+java:S2139ÿ"XEither log this exception and handle it, or rethrow it with some contextual information.(™‚ëšıÿÿÿÿ8ğ¡²ë1J$d2b1fdf9-cdce-4ff9-be38-16c685bd39da
 œ
-java:S2139‚"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ğ¡²ë1J$b6c740b3-1ce1-4279-b3a0-282ed173e8ce
+java:S2139‚"XEither log this exception and handle it, or rethrow it with some contextual information.(”ı¾8ğ¡²ë1J$27b42341-9e02-456c-bf2f-cdb73b57e0fa
+
+java:S1128"LRemove this unused import 'org.chicchoice.vetementservice.dtos.EnsembleDto'.(âÂÑ±8¦É¢Ôë1J$6a777393-fcc9-4243-acfd-7a3ce50bebe5
+£
+java:S1128"[Remove this unused import 'org.chicchoice.vetementservice.dtos.request.VetementRequestDto'.(£”÷óúÿÿÿÿ8ªÉ¢Ôë1J$730c40b0-04ad-4674-a8fa-f060ecfc19f2
 u
-java:S1068""2Remove this unused "vetementMapper" private field.(‚Ô¯è8äğ¡²ë1J$e4d6610b-dd6e-4a9f-b4af-f22a2db04eb6
+java:S1068""2Remove this unused "vetementMapper" private field.(‚Ô¯è8äğ¡²ë1J$638a031d-5bce-436a-a898-96647d4a5dd8

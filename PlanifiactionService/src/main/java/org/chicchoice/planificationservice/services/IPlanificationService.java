@@ -15,4 +15,5 @@ public interface IPlanificationService {
     void supprimerEnsembleDePlanification(Long idPlanification, Long idEnsemble);
     PlanificationDto getPlanificationByDateAndUtilisateurId(LocalDate date, Long userId);
     void supprimerPlanificationsByUtilisateurId(Long userId);
+    Page<PlanificationDto> getAllPlanififcation(Pageable pageable);
 }

@@ -26,6 +26,10 @@ spring:
           uri: lb://UTILISATEUR
           predicates:
             - Path=/api/v1/users/**
+        - id: planification
+          uri: lb://PLANIFICATION
+          predicates:
+            - Path=/api/v1/planfications/**
   security:
     oauth2:
       resourceserver:

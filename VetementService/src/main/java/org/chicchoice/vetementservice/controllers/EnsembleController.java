@@ -1,12 +1,8 @@
 package org.chicchoice.vetementservice.controllers;
 
 import jakarta.validation.Valid;
-import org.chicchoice.vetementservice.dtos.EnsembleDto;
-import org.chicchoice.vetementservice.dtos.VetementDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
-import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
-import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.services.impl.EnsembleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
