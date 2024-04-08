@@ -3,7 +3,6 @@ package org.chicchoice.vetementservice.services.impl;
 
 import com.simplon.media.MediaClient;
 import lombok.AllArgsConstructor;
-import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
 import org.chicchoice.vetementservice.enums.Category;
@@ -12,6 +11,7 @@ import org.chicchoice.vetementservice.exeptions.ServiceException;
 import org.chicchoice.vetementservice.exeptions.VetementAlreadyExistsException;
 import org.chicchoice.vetementservice.mapper.VetementMapper;
 import org.chicchoice.vetementservice.repositories.VetementRepository;
+import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.services.IVetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,7 @@ public class VetementService implements IVetementService {
 
 
     @Override
-    public Page<VetementResponseDto> getAllByUserId(Long userId,Pageable pageable) {
+    public Page<VetementResponseDto> getAllByUserId(Long userId, Pageable pageable) {
         try{
             Optional<Page<Vetement>> vetementsCreerParUser = vetementRepository.findAllByUserId(userId,pageable);
             logger.info("recuperation de la liste des vetement avec success");
@@ -175,6 +175,19 @@ public class VetementService implements IVetementService {
         }catch(Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetement");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements parCategory.", e);
+        }
+    }
+
+    @Override
+    public Page<VetementResponseDto> getAllByColorIDandUserID(String couleurId, Long userId,Pageable pageable) {
+        try{
+            //todo check if user with that id exist first
+            Optional<Page<Vetement>> articlesByColor = vetementRepository.findAllByCouleurIdAndUserId(couleurId,userId,pageable);
+            logger.info("fetching all articles by color of id  {} of that user with id :{}",couleurId,userId);
+            return articlesByColor.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
+        }catch(Exception e){
+            logger.error("Error encontre lors de la recuperation de la liste des vetement par couleur");
+            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements par Couleur.", e);
         }
     }
 

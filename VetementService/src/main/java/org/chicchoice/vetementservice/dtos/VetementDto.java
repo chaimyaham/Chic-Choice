@@ -1,7 +1,6 @@
 package org.chicchoice.vetementservice.dtos;
 
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
 import org.chicchoice.vetementservice.enums.Category;
@@ -18,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
 public class VetementDto implements Serializable {
     @Positive
     Long id;
@@ -33,10 +31,15 @@ public class VetementDto implements Serializable {
     Long userId;
     @NotNull
     Boolean favoris;
-    List<VetementDto.EnsembleDto> ensembles;
+    @NotNull
+    String couleurId;
+    List<EnsembleDto1> ensembles;
 
-    @Data
-    public static class EnsembleDto{
+    /**
+     * DTO for {@link org.chicchoice.vetementservice.entities.Ensemble}
+     */
+    @Value
+    public static class EnsembleDto1 implements Serializable {
         @Positive
         Long id;
         LocalDateTime createdAt;
@@ -44,6 +47,5 @@ public class VetementDto implements Serializable {
         String nomDeLEnsemble;
         Long utilisateurId;
         Boolean favoris;
-
     }
 }

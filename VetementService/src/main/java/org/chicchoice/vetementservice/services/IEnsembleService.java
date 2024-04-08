@@ -1,14 +1,10 @@
 package org.chicchoice.vetementservice.services;
 
-import org.chicchoice.vetementservice.dtos.EnsembleDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
-import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 public interface IEnsembleService {
     EnsembleResponseDto ajouterUnVetementAUnEnsemble(Long vetementId, Long ensembleId);

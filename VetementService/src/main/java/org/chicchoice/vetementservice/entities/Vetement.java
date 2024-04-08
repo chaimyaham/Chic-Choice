@@ -26,6 +26,7 @@ public class Vetement {
     private Long mediaId;
     private Long userId;
     private Boolean favoris;
+    private String couleurId;
     @ManyToMany(mappedBy = "vetements")
     private List<Ensemble> ensembles;
     public boolean isFavoris() {

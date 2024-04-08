@@ -8,7 +8,6 @@ import org.chicchoice.vetementservice.enums.Category;
 import org.chicchoice.vetementservice.services.impl.VetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -108,5 +107,17 @@ public class VetementController {
             return new ResponseEntity<>(vetementDto, HttpStatus.OK);
 
     }
+    @GetMapping("/couleur/{couleurId}/utilisateur/{userId}")
+    public ResponseEntity<Page<VetementResponseDto>> getVetementsByCouleurAndUser(
+            @PathVariable String couleurId,
+            @PathVariable Long userId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByColorIDandUserID(couleurId, userId, pageable);
+        return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
+    }
+
 
 }

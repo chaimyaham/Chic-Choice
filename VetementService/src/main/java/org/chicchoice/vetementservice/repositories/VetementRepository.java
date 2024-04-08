@@ -17,4 +17,5 @@ public interface VetementRepository extends JpaRepository<Vetement, Long> {
     Optional<Page<Vetement>> findAllByCategory(Category category, Pageable pageable);
     Optional<Page<Vetement>>findAllByUserIdAndCategory(Long userId,Category category,Pageable pageable);
     Optional<Page<Vetement>> findAllByUserIdAndFavoris(Long userId,boolean favoris,Pageable pageable);
+    Optional<Page<Vetement>> findAllByCouleurIdAndUserId(String couleurId,Long userId,Pageable pageable);
 }

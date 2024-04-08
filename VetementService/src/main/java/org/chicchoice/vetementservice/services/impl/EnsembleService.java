@@ -1,8 +1,6 @@
 package org.chicchoice.vetementservice.services.impl;
 
-import org.chicchoice.vetementservice.dtos.EnsembleDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
-import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
 import org.chicchoice.vetementservice.entities.Ensemble;
 import org.chicchoice.vetementservice.entities.Vetement;

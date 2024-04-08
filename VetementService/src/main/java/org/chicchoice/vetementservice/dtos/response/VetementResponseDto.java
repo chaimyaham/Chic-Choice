@@ -20,6 +20,7 @@ public class VetementResponseDto implements Serializable {
     Long mediaId;
     Long userId;
     Boolean favoris;
+    String couleurId;
     List<EnsembleDto> ensembles;
 
     /**
