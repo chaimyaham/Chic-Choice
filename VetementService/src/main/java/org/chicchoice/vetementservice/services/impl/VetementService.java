@@ -15,7 +15,6 @@ import org.chicchoice.vetementservice.repositories.VetementRepository;
 import org.chicchoice.vetementservice.services.IVetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -33,15 +32,6 @@ public class VetementService implements IVetementService {
     private final MediaClient mediaClient;
     private static final Logger logger = LoggerFactory.getLogger(VetementService.class);
 
-//    @Autowired
-//    public VetementService(VetementRepository vetementRepository,
-//                           VetementMapper vetementMapper,
-//                           EnsembleService ensembleService,MediaClient mediaClient){
-//        this.vetementRepository=vetementRepository;
-//        this.vetementMapper=vetementMapper;
-//        this.ensembleService=ensembleService;
-//        this.mediaClient=mediaClient;
-//    }
 
     @Override
     public Page<VetementResponseDto> getAllVetements(Pageable pageable) {
@@ -50,7 +40,7 @@ public class VetementService implements IVetementService {
             logger.info("List des vetements recupere avec succes");
             return vetements.map(vetementMapper::toDto1);
         }catch(Exception e){
-            logger.error("Error encontre lors de la recuperation de la liste des vetement");
+            logger.error("Error encontre lors de la recuperation de la liste des vetements ");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
         }
     }
@@ -59,13 +49,11 @@ public class VetementService implements IVetementService {
     @Override
     public Page<VetementResponseDto> getAllByUserId(Long userId,Pageable pageable) {
         try{
-            //todo check if user with that id already exist
-
             Optional<Page<Vetement>> vetementsCreerParUser = vetementRepository.findAllByUserId(userId,pageable);
             logger.info("recuperation de la liste des vetement avec success");
             return vetementsCreerParUser.map(vetements->vetements.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch (Exception e){
-            logger.error("Error encontre lors de la recuperation de la liste des vetement");
+            logger.error("Error encontre lors de la recuperation de la liste des vetement ");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
         }
     }
@@ -96,8 +84,8 @@ public class VetementService implements IVetementService {
 
             Optional<Vetement> article = vetementRepository.findById(id);
             if (article.isEmpty()){
-                logger.error("article with that id n'exist pas : {}",id);
-                throw new ResourceNotFoundException("vetement","article with that id nexist pas",id.toString());
+                logger.error("article avec cet id n'exist pas : {}",id);
+                throw new ResourceNotFoundException("vetement service","article with that id nexist pas",id.toString());
             }
             logger.info("recupere l'article avec cet id {} avec succes",id);
             return vetementMapper.toDto1(article.get());
@@ -115,7 +103,7 @@ public class VetementService implements IVetementService {
             Optional<Vetement> article = vetementRepository.findById(id);
             if (article.isEmpty()){
                 logger.error("article with that id n'exist pas : {}",id);
-                throw new ResourceNotFoundException("vetement","article with that id nexist pas",id.toString());
+                throw new ResourceNotFoundException("vetements","article with that id nexist pas",id.toString());
             }
             Vetement vetement = article.get();
             ensembleService.supprimerVetementDeTousEnsembles(vetement);
@@ -157,7 +145,7 @@ public class VetementService implements IVetementService {
             logger.info("fetching la liste des vetements par category avec success");
             return articlesParCategory.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch (Exception e){
-            logger.error("Error encontre lors de la recuperation de la liste des vetement");
+            logger.error("Error encontre lors de la recuperation de la liste des vetement form db");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements parCategory.", e);
         }
 
@@ -171,7 +159,7 @@ public class VetementService implements IVetementService {
             logger.info("fetching all articles favoris by {}",userId);
             return articleFavorisByUser.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch(Exception e){
-            logger.error("Error encontre lors de la recuperation de la liste des vetement");
+            logger.error("Error encontre lors de la recuperation de la liste des vetements");
             throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements par favoris.", e);
         }
 

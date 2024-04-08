@@ -44,8 +44,6 @@ public class EnsembleService implements IEnsembleService {
     }
     @Override
     public EnsembleResponseDto ajouterUnVetementAUnEnsemble(Long vetementId, Long ensembleId) {
-        try {
-
             Optional<Vetement> existingVetement = vetementRepository.findById(vetementId);
             Optional<Ensemble> existingEnsemble = ensembleRepository.findById(ensembleId);
             //verifier si l id de l'ensemble et du vetement deja exist
@@ -59,6 +57,7 @@ public class EnsembleService implements IEnsembleService {
                         .anyMatch(v -> v.getId().equals(vetementId));
 
                 if (vetementExistDejaDansEnsemble) {
+                    logger.error("Vetement avec cet id : {} exist deja dans L'ensemble",vetementId);
                     throw new VetementAlreadyExistsException("Le vetement choisi existe deja dans cet ensemble");
                 } else {
                     //verifier si il exist deja un vetement de la meme category
@@ -70,10 +69,6 @@ public class EnsembleService implements IEnsembleService {
                 }
             }
 
-        } catch (Exception e) {
-            logger.error("Erreur rencontree lors de l ajout de cet article a cet ensemble: {}", e.getMessage());
-            throw new ServiceException("Ensemble", "Une erreur s est produite lors de l ajout de cet article a cet ensemble.", e);
-        }
     }
 
 
@@ -143,7 +138,7 @@ public class EnsembleService implements IEnsembleService {
             });
         } catch (Exception e) {
             logger.error("Erreur lors du marquage de l ensemble comme favori : {}", e.getMessage());
-            throw new ServiceException("Ensemble", "Une erreur est produite lors du marquage de l ensemble comme favori.", e);
+            throw new ResourceNotFoundException("Ensemble", "avec cet ID n'existe pas", ensembleId.toString());
         }
     }
 
@@ -181,10 +176,8 @@ public class EnsembleService implements IEnsembleService {
     @Override
     public Page<EnsembleResponseDto> getEnsemblesByUserID(Long userId,Pageable pageable) {
      try{
-         //todo check if a user with that id already exist
-
          Optional<Page<Ensemble>> ensemblesCreerParUser=ensembleRepository.findAllByUtilisateurId(userId,pageable);
-         logger.info("recuperation des ensembles avec userID");
+         logger.info("recuperation des ensembles avec userID :{}",userId);
          return ensemblesCreerParUser.map(ensembles -> ensembles.map(ensembleMapper::toDto1)).orElseGet(Page::empty);
      }catch (Exception e){
          logger.error("Erreur lors de la recuperaion de la liste des ensemble", e);
@@ -195,7 +188,6 @@ public class EnsembleService implements IEnsembleService {
 
     @Override
     public Page<EnsembleResponseDto> getEnsemblesFavorisByUserId(Long userId, Pageable pageable) {
-        //todo check if user with that id exist first
         try{
             Optional<Page<Ensemble>> ensemblesFavorisByUser=ensembleRepository.findAllByUtilisateurIdAndFavoris(userId,true,pageable);
             logger.info("recuperation des ensembles avec userID");

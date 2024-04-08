@@ -199,3 +199,5 @@ r
 BFeignClient/src/main/java/com/simplon/vetement/EnsembleClient.java,c/5/c53c0e588e0cdfc1d57f41987bbe6c9008451966
 w
 GFeignClient/src/main/java/com/simplon/vetement/EnsembleResponseDto.java,2/c/2c1cf9bb07ff92a63359fff15762a346b440a197
+“
+cVetementService/src/test/java/org/chicchoice/vetementservice/services/impl/EnsembleServiceTest.java,b/9/b9c4eee1c39ad76ab505e155c91c3dc51e74df1a
