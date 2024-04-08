@@ -1,7 +1,10 @@
 package org.chicchoice.vetementservice.services.impl;
 
 
+import com.simplon.couleur.CouleurClient;
+import com.simplon.couleur.CouleurDto;
 import com.simplon.media.MediaClient;
+import com.simplon.media.MediaDto;
 import lombok.AllArgsConstructor;
 import org.chicchoice.vetementservice.dtos.response.VetementResponseDto;
 import org.chicchoice.vetementservice.entities.Vetement;
@@ -17,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -30,6 +34,7 @@ public class VetementService implements IVetementService {
     private final VetementMapper vetementMapper;
     private final EnsembleService ensembleService;
     private final MediaClient mediaClient;
+    private final CouleurClient couleurClient;
     private static final Logger logger = LoggerFactory.getLogger(VetementService.class);
 
 
@@ -60,22 +65,30 @@ public class VetementService implements IVetementService {
 
     @Override
     public VetementResponseDto createVetement(VetementRequestDto vetementRequestDto) {
-        try{
-            //todo check if the media with that mediaId already exist
+//            check if the couleurid exist on couleur db
+            ResponseEntity<CouleurDto> couleurExist=couleurClient.getColorById(vetementRequestDto.getCouleurId());
+            if (!couleurExist.getStatusCode().is2xxSuccessful()) {
+                logger.error("color with  that id :{} doesn't exist ",vetementRequestDto.getCouleurId());
+                throw new ResourceNotFoundException("Couleur","La couleur avec cet identifiant  n'a pas ete trouvee dans service couleur",vetementRequestDto.getCouleurId());
+            }
+            //check if mediaId exist on media db
+            ResponseEntity<MediaDto> mediaExist=mediaClient.getMediaById(vetementRequestDto.getMediaId());
+            if(!mediaExist.getStatusCode().is2xxSuccessful()){
+                logger.error("media with  that id :{} doesn't exist ",vetementRequestDto.getMediaId());
+                throw new ResourceNotFoundException("Media","La media avec cet identifiant  n'a pas ete trouvee dans service media",vetementRequestDto.getCouleurId());
+            }
+
             Optional<Vetement> vetement =vetementRepository.findByMediaId(vetementRequestDto.getMediaId());
             if(vetement.isPresent()){
                 logger.error("Vetement already exist");
-                throw new VetementAlreadyExistsException("l'article with that id already exist");
+                throw new VetementAlreadyExistsException("l'article with that media id already exist");
             }
             Vetement article=vetementMapper.toEntity(vetementRequestDto);
             article.setDate_d_ajout(LocalDateTime.now());
             Vetement savedVetement = vetementRepository.save(article);
             logger.info("Vetement ajouter avec success");
             return vetementMapper.toDto1(savedVetement);
-        }catch(Exception e){
-            logger.error("Error encontre lors de la creation d'un article");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la creation de cet article.", e);
-        }
+
     }
 
     @Override
