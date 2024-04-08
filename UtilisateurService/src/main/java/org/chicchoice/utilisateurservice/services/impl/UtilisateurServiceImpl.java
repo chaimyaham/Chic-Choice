@@ -67,22 +67,28 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         keycloakUser.setCity(signUpRequest.getVille());
         keycloakUser.setCountry(signUpRequest.getPays());
         keycloakUser.setPreferencesStyle(signUpRequest.getPreferencesStyle());
+//        Puisque je veux envoyeer aussi l id comme attribute je dois save the user on my db
+
+        Utilisateur signUpUser = utilisateurMapper.toEntity(signUpRequest);
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(signUpRequest.getPassword());
+        signUpUser.setPassword(hashedPassword);
+        Utilisateur savedUser = utilisateurRepository.save(signUpUser);
+//        keycloak user setId
+        keycloakUser.setId(savedUser.getId());
 
         int status = keycloakService.createUserWithKeycloak(keycloakUser);
 
         if (status == 201) {
-
             LOGGER.info("UserServiceImpl | signUpUser | status : {}", status);
-            Utilisateur signUpUser = utilisateurMapper.toEntity(signUpRequest);
-
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String hashedPassword = encoder.encode(signUpRequest.getPassword());
-            signUpUser.setPassword(hashedPassword);
-            utilisateurRepository.save(signUpUser);
             return "Sign Up completed";
+        }else {
+            LOGGER.error("UserServiceImpl | signUpUser | La creation de l'utilisateur dans Keycloak a echoue, supprimer l'utilisateur de la base de donnees PostgreSQL");
+            utilisateurRepository.deleteById(savedUser.getId());
+
+            return "Not Register";
         }
 
-        return "Not Register";
     }
     @Override
     public Page<UtilisateurDto> recupererToutsLesUtilisateur(Pageable pageable) {

@@ -75,13 +75,14 @@ public class KeycloakServiceImpl implements KeycloakService {
         String city = keycloakUser.getCity();
         String country = keycloakUser.getCountry();
         String preferencesStyle=keycloakUser.getPreferencesStyle();
+        Long utilisateurID=keycloakUser.getId();
 
         Map<String, List<String>> attributes = new HashMap<>();
         attributes.put("gender", Collections.singletonList(gender));
         attributes.put("region", Collections.singletonList(city));
         attributes.put("country", Collections.singletonList(country));
         attributes.put("style",Collections.singletonList(preferencesStyle));
-
+        attributes.put("utilisateurid",Collections.singletonList(String.valueOf(utilisateurID)));
         userRepresentation.setAttributes(attributes);
 
 
