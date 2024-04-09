@@ -201,13 +201,11 @@ w
 GFeignClient/src/main/java/com/simplon/vetement/EnsembleResponseDto.java,2/c/2c1cf9bb07ff92a63359fff15762a346b440a197
 “
 cVetementService/src/test/java/org/chicchoice/vetementservice/services/impl/EnsembleServiceTest.java,b/9/b9c4eee1c39ad76ab505e155c91c3dc51e74df1a
-”
-dVetementService/src/main/java/org/chicchoice/vetementservice/dtos/request/VetementRequestDtoDto.java,0/4/04a23cff7e713e5f73e9ef871de987665c5fd2e7
-…
-UVetementService/src/main/java/org/chicchoice/vetementservice/dtos/VetementMapper.java,c/3/c31a3f5ed8c95a550dad319a1ac9192c69b09d60
 p
 @FeignClient/src/main/java/com/simplon/couleur/CouleurClient.java,0/b/0beadce9fa82a2cbc46d1920e145e13ed7e3d94b
-…
-UCouleurService/src/main/java/org/chicchoice/CouleurService/controller/CouleurDto.java,6/4/64ebec7025275e585f2ff9db18cfaa617c843ae6
 m
 =FeignClient/src/main/java/com/simplon/couleur/CouleurDto.java,1/a/1a3b8fe50863db9506a7e517088ccae25324c65c
+|
+LFeignClient/src/main/java/com/simplon/planification/PlanificationClient.java,8/0/800b7f3415f4b6ccb58f28dd3ad98daa98d7da47
+y
+IFeignClient/src/main/java/com/simplon/planification/PlanificationDto.java,d/6/d6c3d9e7714f585f75ab242d84fd69fd60c45de7

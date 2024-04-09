@@ -17,4 +17,5 @@ public interface PlanificationRepository extends JpaRepository<Planification, Lo
     List<Planification> findAllByUtilisateurId(Long utilisateurId);
     void deleteAllByUtilisateurId(Long utilisateurId);
     Optional<Planification> findFirstByDateDebutBetweenAndUtilisateurIdOrderByDateDebutAsc(LocalDateTime debut, LocalDateTime fin, Long utilisateurId);
+    List<Planification> findByEnsemblesIdsContaining(Long ensembleId);
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.chicchoice.planificationservice.dtos.PlanificationDto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/planfications")
@@ -92,6 +93,14 @@ public class PlanificationController {
             PlanificationDto planificationDto = planificationService.getPlanificationByDateAndUtilisateurId(date, userId);
             return new ResponseEntity<>(planificationDto,HttpStatus.OK);
 
+    }
+    @GetMapping("all/ensemble/{ensembleId}")
+    public ResponseEntity<List<PlanificationDto>> getPlanificationsWithEnsembleId(
+            @PathVariable Long ensembleId
+    ){
+        logger.info("Planififcation Controller |Recherche des planifications qui contientt l'ensemble avec l id :{}",ensembleId);
+        List<PlanificationDto> planificationDtos=planificationService.getAllPlanficationThatContainsEnsemble(ensembleId);
+        return new ResponseEntity<>(planificationDtos,HttpStatus.OK);
     }
 
 

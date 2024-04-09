@@ -24,6 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+
 @Service
 @Transactional
 public class PlanificationService implements IPlanificationService {
@@ -51,7 +52,7 @@ public class PlanificationService implements IPlanificationService {
            return allExistingPalnificationByUserId.map(planificationMapper::toDto);
         }catch (Exception e){
              logger.error("une erreur est survenu lors de la recuperation de tout les planification de cet userId {} ",userId);
-             throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de tout les planification de cet userId",userId.toString());
+             throw new ResourceNotFoundException("Planification service","une erreur est survenu lors de la recuperation de tout les planification de cet userId",userId.toString());
         }
 
     }
@@ -192,6 +193,20 @@ public class PlanificationService implements IPlanificationService {
             return planifications.map(planificationMapper::toDto);
         }catch (Exception e){
             logger.error("une erreur est survenu lors de la recuperation de tout les planification ");
+            throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de tout les planification","service");
+        }
+    }
+
+    @Override
+    public List<PlanificationDto> getAllPlanficationThatContainsEnsemble(Long ensembleId) {
+        try {
+            List<Planification> planifications = planificationRepository.findByEnsemblesIdsContaining(ensembleId);
+            logger.info("recuperation de la liste des planification qui contient that enseemble : {} avec  succes",ensembleId);
+            return planifications.stream()
+                    .map(planificationMapper::toDto)
+                    .toList();
+        }catch (Exception e){
+            logger.error("une erreur est survenu lors de la recuperation de tout les planification that contains tthis ensemble : {} ",ensembleId);
             throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de tout les planification","service");
         }
     }

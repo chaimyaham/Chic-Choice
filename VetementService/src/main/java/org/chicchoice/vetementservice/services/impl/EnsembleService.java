@@ -1,5 +1,7 @@
 package org.chicchoice.vetementservice.services.impl;
 
+import com.simplon.planification.PlanificationClient;
+import com.simplon.planification.PlanificationDto;
 import org.chicchoice.vetementservice.dtos.request.EnsembleRequestDto;
 import org.chicchoice.vetementservice.dtos.response.EnsembleResponseDto;
 import org.chicchoice.vetementservice.entities.Ensemble;
@@ -30,15 +32,17 @@ public class EnsembleService implements IEnsembleService {
     private final EnsembleMapper ensembleMapper;
     private final VetementRepository vetementRepository;
     private final VetementMapper vetementMapper;
+    private final PlanificationClient planificationClient;
     private static final Logger logger = LoggerFactory.getLogger(EnsembleService.class);
 
 
     @Autowired
-    public EnsembleService(EnsembleRepository ensembleRepository,EnsembleMapper ensembleMapper,VetementRepository vetementRepository,VetementMapper vetementMapper){
+    public EnsembleService(EnsembleRepository ensembleRepository,EnsembleMapper ensembleMapper,VetementRepository vetementRepository,VetementMapper vetementMapper,PlanificationClient planificationClient){
         this.ensembleMapper=ensembleMapper;
         this.ensembleRepository=ensembleRepository;
         this.vetementRepository=vetementRepository;
         this.vetementMapper=vetementMapper;
+        this.planificationClient=planificationClient;
     }
     @Override
     public EnsembleResponseDto ajouterUnVetementAUnEnsemble(Long vetementId, Long ensembleId) {
@@ -111,7 +115,17 @@ public class EnsembleService implements IEnsembleService {
             }
             //supprimer l'ensemble
             ensembleRepository.deleteById(ensembleId);
-            logger.info("Ensemble avec cet id est supprimer avec succes: {}", ensembleId);
+//            supprimer l ensemble dee toutes les planififcations
+            List<PlanificationDto> planificationDtos=planificationClient.getPlanificationsWithEnsembleId(ensembleId).getBody();
+            if (planificationDtos != null && !planificationDtos.isEmpty()) {
+                for (PlanificationDto planificationDto : planificationDtos) {
+                   planificationClient.supprimerEnsembleDePlanification(planificationDto.getId(),ensembleId);
+                }
+                logger.info("suppression de l'ensemble et de toutes les planifications avec id : {}", ensembleId);
+            } else {
+                logger.info("aucune planification trouvee avec cet ensemble id : {}", ensembleId);
+            }
+            logger.info("ensemble avec cet id est supprimer avec succes: {}", ensembleId);
 
         }catch(Exception e){
             logger.error("Erreur rencontrer lors de la suppression  de cet ensemble {}", e.getMessage());
