@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/users")
+@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST})
 public class UtilisateurController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(UtilisateurController.class);
@@ -31,7 +32,8 @@ public class UtilisateurController {
     @PostMapping("/signup")
     public ResponseEntity<?> signUpUser(@RequestBody UtilisateurDto signUpRequest){
         LOGGER.info("UserController | signUpUser a demarre. Role: {}, Email: {}, Nom: {}", signUpRequest.getRole(), signUpRequest.getEmail(), signUpRequest.getNom());
-        return ResponseEntity.ok(userService.signUpUser(signUpRequest));
+        String message = userService.signUpUser(signUpRequest);
+        return ResponseEntity.status(HttpStatus.OK).body("{\"message\": \"" + message + "\"}");
     }
 
     @PostMapping("/login")

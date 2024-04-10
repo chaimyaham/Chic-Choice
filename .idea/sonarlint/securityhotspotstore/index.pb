@@ -209,3 +209,5 @@ m
 LFeignClient/src/main/java/com/simplon/planification/PlanificationClient.java,8/0/800b7f3415f4b6ccb58f28dd3ad98daa98d7da47
 y
 IFeignClient/src/main/java/com/simplon/planification/PlanificationDto.java,d/6/d6c3d9e7714f585f75ab242d84fd69fd60c45de7
+k
+;Gateway/src/main/java/org/chicchoice/config/CorsConfig.java,6/6/66096a15716ae4cb760c962faac893e7c5d7bde8

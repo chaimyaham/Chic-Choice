@@ -2,7 +2,6 @@ package org.chicchoice.utilisateurservice.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.chicchoice.utilisateurservice.enums.Sexe;
@@ -28,12 +27,6 @@ public class UtilisateurDto implements Serializable {
 
     @NotNull
     @Size(min = 8, message = "Password must be at least 8 characters long")
-    @Pattern.List({
-            @Pattern(regexp = ".*\\d.*", message = "Password must contain at least one digit"),
-            @Pattern(regexp = ".*[a-z].*", message = "Password must contain at least one lowercase letter"),
-            @Pattern(regexp = ".*[A-Z].*", message = "Password must contain at least one uppercase letter"),
-            @Pattern(regexp = ".*[!@#$%^&*()\\-_=+{};:,<.>\\[\\]\\\\|/?~].*", message = "Password must contain at least one special character")
-    })
     String password;
 
     @NotNull
