@@ -118,6 +118,16 @@ public class VetementController {
         Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByColorIDandUserID(couleurId, userId, pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
+    @GetMapping("/utilisateur/{utilisateurId}")
+    public ResponseEntity<Page<VetementResponseDto>> getAllVetementById(
+            @PathVariable Long utilisateurId,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByUserId(utilisateurId,pageable);
+        return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
+    }
 
 
 }
