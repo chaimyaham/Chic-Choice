@@ -7,7 +7,9 @@ import org.chicchoice.vetementservice.services.impl.EnsembleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +59,7 @@ public class EnsembleController {
             @RequestParam(defaultValue = "10") int size
     ) {
         logger.info("Obtenir tous les ensembles crees par un utilisateur - Controleur");
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<EnsembleResponseDto> ensemblesPage = ensembleService.getEnsemblesByUserID(idUtilisateur,pageable);
         return new ResponseEntity<>(ensemblesPage, HttpStatus.OK);
     }
@@ -67,7 +69,7 @@ public class EnsembleController {
             @RequestParam(defaultValue = "10") int size
     ){
         logger.info("Obtenir tous les ensembles - Controleur");
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<EnsembleResponseDto> ensembleDtoPage=ensembleService.getAllEnsembles(pageable);
         return new ResponseEntity<>(ensembleDtoPage, HttpStatus.OK);
     }
@@ -80,8 +82,11 @@ public class EnsembleController {
     @GetMapping("/favoris/utilisateur/{userId}")
     public ResponseEntity<Page<EnsembleResponseDto>> obtenirEnsemblesFavorisParUtilisateur(
             @PathVariable Long userId,
-            Pageable pageable
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+
     ){
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<EnsembleResponseDto> ensembleDtoPage = ensembleService.getEnsemblesFavorisByUserId(userId, pageable);
         logger.info("obtenir les Ensembles Favoris dee cet Utilisateur {}- Controleur",userId);
         return new ResponseEntity<>(ensembleDtoPage, HttpStatus.OK);

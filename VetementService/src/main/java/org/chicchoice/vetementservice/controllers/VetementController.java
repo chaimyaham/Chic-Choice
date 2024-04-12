@@ -9,7 +9,9 @@ import org.chicchoice.vetementservice.services.impl.VetementService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +33,7 @@ public class VetementController {
             @RequestParam(defaultValue = "10") int size
     ){
         logger.info("fetching all vetement by pagination");
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage=vetementService.getAllVetements(pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
@@ -71,7 +73,7 @@ public class VetementController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage = vetementService.getVetementsByCategory(category, pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
@@ -82,7 +84,7 @@ public class VetementController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByCategoryAndUserId(userId, category, pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
@@ -92,7 +94,7 @@ public class VetementController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage = vetementService.getVetementsFavorisByUserId(userId, pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
@@ -114,7 +116,7 @@ public class VetementController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByColorIDandUserID(couleurId, userId, pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }
@@ -124,7 +126,7 @@ public class VetementController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ){
-        Pageable pageable = Pageable.ofSize(size).withPage(page);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
         Page<VetementResponseDto> vetementDtoPage = vetementService.getAllByUserId(utilisateurId,pageable);
         return new ResponseEntity<>(vetementDtoPage, HttpStatus.OK);
     }

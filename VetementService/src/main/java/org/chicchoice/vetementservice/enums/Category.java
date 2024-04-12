@@ -5,5 +5,5 @@ public enum Category {
     BAS,
     VESTE,
     CHAUSSURE,
-    ACCESSOIR
+    ACCESSOIRE,
 }

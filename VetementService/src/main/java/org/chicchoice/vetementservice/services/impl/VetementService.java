@@ -11,7 +11,6 @@ import org.chicchoice.vetementservice.entities.Vetement;
 import org.chicchoice.vetementservice.enums.Category;
 import org.chicchoice.vetementservice.exeptions.ResourceNotFoundException;
 import org.chicchoice.vetementservice.exeptions.ServiceException;
-import org.chicchoice.vetementservice.exeptions.VetementAlreadyExistsException;
 import org.chicchoice.vetementservice.mapper.VetementMapper;
 import org.chicchoice.vetementservice.repositories.VetementRepository;
 import org.chicchoice.vetementservice.dtos.request.VetementRequestDto;
@@ -46,7 +45,7 @@ public class VetementService implements IVetementService {
             return vetements.map(vetementMapper::toDto1);
         }catch(Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetements ");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
+            throw new ServiceException("Vetements","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
         }
     }
 
@@ -59,7 +58,7 @@ public class VetementService implements IVetementService {
             return vetementsCreerParUser.map(vetements->vetements.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch (Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetement ");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
+            throw new ServiceException("Vetement se","Une erreur s'est produite lors de la recuperation de tous les vetements.", e);
         }
     }
 
@@ -78,11 +77,6 @@ public class VetementService implements IVetementService {
                 throw new ResourceNotFoundException("Media","La media avec cet identifiant  n'a pas ete trouvee dans service media",vetementRequestDto.getCouleurId());
             }
 
-            Optional<Vetement> vetement =vetementRepository.findByMediaId(vetementRequestDto.getMediaId());
-            if(vetement.isPresent()){
-                logger.error("Vetement already exist");
-                throw new VetementAlreadyExistsException("l'article with that media id already exist");
-            }
             Vetement article=vetementMapper.toEntity(vetementRequestDto);
             article.setDate_d_ajout(LocalDateTime.now());
             Vetement savedVetement = vetementRepository.save(article);
@@ -105,7 +99,7 @@ public class VetementService implements IVetementService {
 
         }catch (Exception e){
             logger.error("Error encontre lors de la recuperation de cet article");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de cet article", e);
+            throw new ServiceException("Vetement service","Une erreur s'est produite lors de la recuperation de cet article", e);
         }
 
     }
@@ -120,13 +114,12 @@ public class VetementService implements IVetementService {
             }
             Vetement vetement = article.get();
             ensembleService.supprimerVetementDeTousEnsembles(vetement);
-//            todo also delete the media of that vetement using feign client
             vetementRepository.deleteById(id);
             logger.info("article supprimer avec succes");
 
         }catch (Exception e){
             logger.error("Error encontre lors de la suppression de cet article");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la suppression de cet article", e);
+            throw new ServiceException("Vetement S","Une erreur s'est produite lors de la suppression de cet article", e);
         }
 
     }
@@ -146,7 +139,7 @@ public class VetementService implements IVetementService {
             });
         } catch (Exception e) {
             logger.error("Erreur lors du marquage du vetement comme favori");
-            throw new ServiceException("vetementId", "Une erreur est produite lors du marquage de l article comme favori.", e);
+            throw new ServiceException("vetement", "Une erreur est produite lors du marquage de l article comme favori.", e);
         }
 
     }
@@ -159,7 +152,7 @@ public class VetementService implements IVetementService {
             return articlesParCategory.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch (Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetement form db");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements parCategory.", e);
+            throw new ServiceException("Vetement SERVICE","Une erreur s'est produite lors de la recuperation de tous les vetements parCategory.", e);
         }
 
     }
@@ -167,13 +160,13 @@ public class VetementService implements IVetementService {
     @Override
     public Page<VetementResponseDto> getVetementsFavorisByUserId(Long userId,Pageable pageable) {
         try{
-            //todo check if user with that id exist first
+
             Optional<Page<Vetement>> articleFavorisByUser = vetementRepository.findAllByUserIdAndFavoris(userId,true,pageable);
             logger.info("fetching all articles favoris by {}",userId);
             return articleFavorisByUser.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
         }catch(Exception e){
             logger.error("Error encontre lors de la recuperation de la liste des vetements");
-            throw new ServiceException("Vetement","Une erreur s'est produite lors de la recuperation de tous les vetements par favoris.", e);
+            throw new ServiceException("Vetement service","Une erreur s'est produite lors de la recuperation de tous les vetements par favoris.", e);
         }
 
     }
