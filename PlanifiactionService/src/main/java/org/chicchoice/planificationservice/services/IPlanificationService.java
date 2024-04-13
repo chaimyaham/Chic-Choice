@@ -18,4 +18,5 @@ public interface IPlanificationService {
     void supprimerPlanificationsByUtilisateurId(Long userId);
     Page<PlanificationDto> getAllPlanififcation(Pageable pageable);
     List<PlanificationDto> getAllPlanficationThatContainsEnsemble(Long ensembleId);
+    PlanificationDto getPlanificationById(Long id);
 }

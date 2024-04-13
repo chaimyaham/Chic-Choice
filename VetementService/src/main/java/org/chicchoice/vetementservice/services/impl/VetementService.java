@@ -174,7 +174,6 @@ public class VetementService implements IVetementService {
     @Override
     public Page<VetementResponseDto> getAllByCategoryAndUserId(Long userId, Category category, Pageable pageable) {
         try{
-            //todo check if user with that id exist first
             Optional<Page<Vetement>> articlesByCategory = vetementRepository.findAllByUserIdAndCategory(userId,category,pageable);
             logger.info("fetching all articles by category {} of that{}",category,userId);
             return articlesByCategory.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);
@@ -187,7 +186,6 @@ public class VetementService implements IVetementService {
     @Override
     public Page<VetementResponseDto> getAllByColorIDandUserID(String couleurId, Long userId,Pageable pageable) {
         try{
-            //todo check if user with that id exist first
             Optional<Page<Vetement>> articlesByColor = vetementRepository.findAllByCouleurIdAndUserId(couleurId,userId,pageable);
             logger.info("fetching all articles by color of id  {} of that user with id :{}",couleurId,userId);
             return articlesByColor.map(articles->articles.map(vetementMapper::toDto1)).orElseGet(Page::empty);

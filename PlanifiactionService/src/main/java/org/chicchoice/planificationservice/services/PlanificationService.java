@@ -210,4 +210,20 @@ public class PlanificationService implements IPlanificationService {
             throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de tout les planification","service");
         }
     }
+
+    @Override
+    public PlanificationDto getPlanificationById(Long id) {
+        try {
+            Optional<Planification> planification = planificationRepository.findById(id);
+            if(planification.isEmpty()){
+                logger.info("la planification avec cet id {} n'exts pas",id);
+                throw new ResourceNotFoundException("Planification","planification n'exist pas","service");
+            }
+            logger.info("recuperation de la  planification qui a cet id {} avec  succes",id);
+            return planificationMapper.toDto(planification.get());
+        }catch (Exception e){
+            logger.error("une erreur est survenu lors de la recuperation de la planification that contains tthis id: {} ",id);
+            throw new ResourceNotFoundException("Planification","une erreur est survenu lors de la recuperation de la planification","service");
+        }
+    }
 }

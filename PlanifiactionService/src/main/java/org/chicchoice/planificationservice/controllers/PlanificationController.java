@@ -103,5 +103,14 @@ public class PlanificationController {
         return new ResponseEntity<>(planificationDtos,HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PlanificationDto> getPlanificationById(
+            @PathVariable Long id
+    ){
+        logger.info("reecuuperation de la planification avec cet id",id);
+       PlanificationDto planififcation= planificationService.getPlanificationById(id);
+        return new ResponseEntity<>(planififcation,HttpStatus.OK);
+    }
+
 
 }
