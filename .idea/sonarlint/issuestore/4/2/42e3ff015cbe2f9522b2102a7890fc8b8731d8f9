@@ -1,12 +1,0 @@
-
-˜	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áßÃøıÿÿÿÿ8¢›„¸é1J$3ee52deb-ec5f-4666-9736-3a1d2cef896e
-˜	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾åã×øÿÿÿÿ8£›„¸é1J$35ca1617-81dd-4f4b-a8da-87be5a8fdcbc
-ª
-java:S4087("bRemove this "close" call; closing the resource is handled automatically by the try-with-resources.(æŒÕ®ùÿÿÿÿ8‚œ„¸é1J$bf69d176-6cfe-4907-be1f-b871a1037f0b
-‚	java:S899A";Do something with the "boolean" value returned by "delete".(²Œ­ûÿÿÿÿ8’œ„¸é1J$4e2cbf52-06ba-4023-8de8-a98cd6fde8f7
-–
-java:S4042A"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(²Œ­ûÿÿÿÿ8“œ„¸é1J$333a53b6-5f2b-4ac4-8fb6-91147b7595be
-Š
-java:S1128	"GRemove this unused import 'org.chicchoice.mediaservice.entities.Media'.(—éÊà8›œ„¸é1J$89dc6aca-0ad2-4a0d-becc-a2425c4a1732
-|
-java:S1068"4Remove this unused "mediaRespository" private field.(ÊœüÑøÿÿÿÿ8 œ„¸é1J$aedff565-b7f7-4bb4-b235-1aa2fde0aea5
