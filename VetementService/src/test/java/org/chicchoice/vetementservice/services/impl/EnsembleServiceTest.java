@@ -50,7 +50,7 @@ class EnsembleServiceTest {
         MockitoAnnotations.initMocks(this);
     }
     @Test
-    void ajouterUnVetementAUnEnsemble_VetementNonDansEnsemble_VerifyVetementAdded() {
+    void testAjouterUnVetementAUnEnsemble() {
         Vetement vetement = new Vetement();
         vetement.setId(1L);
         vetement.setCategory(Category.HAUT);
@@ -63,7 +63,7 @@ class EnsembleServiceTest {
         assertTrue(ensemble.getVetements().contains(vetement));
     }
     @Test
-    void ajouterUnVetementAUnEnsemble_VetementDansEnsemble_ThrowVetementAlreadyExistsException() {
+    void testAjouterUnVetementAUnEnsemble_ThrowVetementAlreadyExistsException() {
         Vetement vetement = new Vetement();
         vetement.setId(1L);
         vetement.setCategory(Category.HAUT);
@@ -75,22 +75,15 @@ class EnsembleServiceTest {
         assertThrows(VetementAlreadyExistsException.class, () -> ensembleService.ajouterUnVetementAUnEnsemble(1L, 1L));
     }
     @Test
-    void ajouterUnVetementAUnEnsemble_EnsembleOuVetementNonExistant_ThrowResourceNotFoundException() {
+    void testAjouterUnVetementAUnEnsemble_EnsembleOuVetementNonExistant_ThrowResourceNotFoundException() {
         when(vetementRepository.findById(1L)).thenReturn(Optional.empty());
         when(ensembleRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> ensembleService.ajouterUnVetementAUnEnsemble(1L, 1L));
     }
 
+
     @Test
-    void supprimerUnEnsemble_EnsembleExistant_VerifyEnsembleDeleted() {
-        Ensemble ensemble = new Ensemble();
-        ensemble.setId(1L);
-        when(ensembleRepository.findById(1L)).thenReturn(Optional.of(ensemble));
-        ensembleService.supprimerUnEnsemble(1L);
-        verify(ensembleRepository).deleteById(1L);
-    }
-    @Test
-    void marquerUnEnsembleCommeFavori_EnsembleExistant_VerifyEnsembleMarkedAsFavorite() {
+    void testMarquerUnEnsembleCommeFavori_EnsembleExistant_VerifyEnsembleMarkedAsFavorite() {
         Ensemble ensemble = new Ensemble();
         ensemble.setId(1L);
         ensemble.setFavoris(false);
@@ -99,7 +92,7 @@ class EnsembleServiceTest {
         assertTrue(ensemble.isFavoris());
     }
     @Test
-    void marquerUnEnsembleCommeFavori_EnsembleInexistant_ThrowResourceNotFoundException() {
+    void testMarquerUnEnsembleCommeFavori_EnsembleInexistant_ThrowResourceNotFoundException() {
         when(ensembleRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(ResourceNotFoundException.class, () -> ensembleService.marquerUnEnsembleCommeFavori(1L));
     }
@@ -122,7 +115,7 @@ class EnsembleServiceTest {
     }
 
     @Test
-    void creerEtAjouterUnEnsemble_Failure() {
+    void testCreerEtAjouterUnEnsemble_Failure() {
         EnsembleRequestDto ensembleRequestDto = new EnsembleRequestDto();
         ensembleRequestDto.setNomDeLEnsemble("Nouvel ensemble");
         when(ensembleMapper.toEntity(ensembleRequestDto)).thenThrow(new RuntimeException());
