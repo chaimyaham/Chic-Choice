@@ -1,0 +1,4 @@
+org/chicchoice/Gateway.class
+org/chicchoice/config/KeycloakRoleConverter.class
+org/chicchoice/config/SecurityConfig.class
+org/chicchoice/config/CorsConfig.class

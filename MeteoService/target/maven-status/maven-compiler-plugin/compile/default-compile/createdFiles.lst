@@ -1,0 +1,4 @@
+org/chicchoice/meteoservice/dtos/MeteoDto.class
+org/chicchoice/meteoservice/entities/Meteo.class
+org/chicchoice/meteoservice/MeteoServiceApplication.class
+org/chicchoice/meteoservice/repository/MeteoRepository.class

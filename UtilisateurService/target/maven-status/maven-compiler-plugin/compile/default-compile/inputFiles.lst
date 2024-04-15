@@ -1,0 +1,17 @@
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/impl/KeycloakServiceImpl.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/dtos/UtilisateurDto.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/entities/Utilisateur.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/UtilisateurServiceApplication.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/controllers/UtilisateurController.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/mapper/UtilisateurMapper.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/config/KeycloakConfig.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/enums/UtilisateurRole.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/enums/Sexe.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/exceptions/EmailAlreadyExistsException.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/KeycloakService.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/exceptions/UtilisateurNotFoundException.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/impl/UtilisateurServiceImpl.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/dtos/LoginRequest.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/repository/UtilisateurRepository.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/dtos/KeycloakUser.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/UtilisateurService/src/main/java/org/chicchoice/utilisateurservice/services/UtilisateurService.java

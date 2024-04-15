@@ -1,3 +1,11 @@
 /Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/MediaServiceApplication.java
 /Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/controller/ImageController.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/repository/MediaRepository.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/dtos/MediaDto.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/exceptions/NotFoundException.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/dtos/MediaMapper.java
 /Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/service/ImageService.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/service/MediaService.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/entities/Media.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/exceptions/ServiceException.java
+/Users/kawtarmahy/Desktop/gc/FileRougeProject/chic-choice/MediaService/src/main/java/org/chicchoice/mediaservice/service/MediaServiceImpl.java

@@ -1,0 +1,11 @@
+com/simplon/planification/PlanificationDto$PlanificationDtoBuilder.class
+com/simplon/couleur/CouleurDto.class
+com/simplon/vetement/EnsembleResponseDto.class
+com/simplon/media/MediaDto$MediaDtoBuilder.class
+com/simplon/media/MediaDto.class
+com/simplon/media/MediaClient.class
+com/simplon/planification/PlanificationClient.class
+com/simplon/vetement/EnsembleClient.class
+com/simplon/planification/PlanificationDto.class
+com/simplon/couleur/CouleurDto$CouleurDtoBuilder.class
+com/simplon/couleur/CouleurClient.class
