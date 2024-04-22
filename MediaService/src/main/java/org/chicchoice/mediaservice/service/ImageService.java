@@ -48,7 +48,7 @@ public class ImageService {
         Credentials credentials = GoogleCredentials.fromStream(inputStream);
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
         storage.create(blobInfo, Files.readAllBytes(file.toPath()));
-        String DOWNLOAD_URL = "https://firebasestorage.googleapis.com/v0/b/mediaservice-7dd57.appspot.com/o/%s?alt=media";
+        String DOWNLOAD_URL = "";
         return String.format(DOWNLOAD_URL, URLEncoder.encode(fileName, StandardCharsets.UTF_8));
     }
     private String getExtension(String fileName) {
